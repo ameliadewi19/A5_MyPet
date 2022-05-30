@@ -1,23 +1,19 @@
-#include "boolean.h"
+#include "../boolean.h"
 #include "list.h"
 #include <stdlib.h>
 #include <stdio.h>
 
 /* ** Prototype   **  */
 /* ** Test List Kosong **  */
-
-// mengecek apakah jumlah elemen pada List kosong
-// mengirimkan true jika List kosong, mengirimkan false jika tidak
-// =========================================================================
-/** { KELOMPOK Interaksi operasi linear list, baca tulis } **/
-/**Penambahan Elemen***/
 boolean ListEmpty(List L){
+	// mengecek apakah jumlah elemen pada List kosong
+	// mengirimkan true jika List kosong, mengirimkan false jika tidak
+	// =========================================================================
+	/** { KELOMPOK Interaksi operasi linear list, baca tulis } **/
+	/**Penambahan Elemen***/
 	return(First(L)==Nil);
 }
 
-/* Pembuatan  List Kosong  */
-/* I.S  :  Sembarang    		*/
-/* F.S  :  Terbentuk  List kosong  	*/
 void CreateList(List *L){
 	First(*L)=Nil;
 }
@@ -37,14 +33,21 @@ addressList AlokasiList(infoPenyakit  X){
     return P;
 }
 
-/*I.S : P terdefinisi
-F.S : P dikembalikan ke sistem
-Melakukan dealokasi/ pengembalian address P ke system
-*/
 void DealokasiList (addressList *P){
+	/*I.S : P terdefinisi
+	F.S : P dikembalikan ke sistem
+	Melakukan dealokasi/ pengembalian address P ke system
+	*/
 	Next(*P) = Nil;
 	free(*P);
 }
+
+/*   ** PENCARIAN SEBUAH ELEMEN LIST **   */
+
+boolean FSearch(List L, addressList P);
+/* Mencari apakah  ada elemen List yang  beralamat   P   */
+/* Mengirimkan true jika ada, false jika tidak ada  	 */
+
 
 /* ** PRIMITIF BERDASARKAN NILAI ** */
 
@@ -196,6 +199,12 @@ void DelAfter (List * L, infoPenyakit *X, infoPenyakit Y){
 /* Penambahan Elemen Berdasarkan Alamat 		*/
 
 /* *************PROSES SEMUA ELEMEN ****************   */
+void PrintInfo(List L, char **C);
+/* I.S   : List mungkin kosong 	*/
+/* F.S   : Jika list tidak kosong, semua info yang disimpan pada */
+/*         elemen list di-print					 */
+/*         Jika list kosong, hanya menuliskan "List Kosong"	 */
+
 int JumlahPenyakit(List L){
 	addressList P;
   	int jumlah = 0;

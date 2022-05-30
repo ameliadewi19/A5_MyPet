@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
-#include "boolean.h"
+#include "../boolean.h"
 #include "queue.h"
-#include "list.h"
 
 /***** Manajemen memori *****/
 /* Mengirimkan address hasil alokasi sebuah elemen dengan info X.
@@ -74,101 +73,6 @@ bool IsQueueEmpty(Queue Q){
 	}
 }
 
-/* Memasukkan info baru ke dalam Queue dengan aturan FIFO */
-/* I.S. Q mungkin kosong atau Q mungkin berisi antrian */ 
-/* F.S. info baru (data) menjadi Rear yang baru dengan node Rear yang lama mengaitkan pointernya ke node yang baru */ 
-void enQueue(Queue *Q, infotype data){
-//	addressQueue P = searchPosisi(*Q, data.kategori);
-//	addressQueue X = AlokasiQueue(data);
-//	if (IsQueueEmpty(*Q)){
-//		Front(*Q) = X;
-//		Rear(*Q) = X;
-//	} else if (Next(P) == Nil) {
-//		addressQueue Temp = Front(*Q);
-//		Front(*Q) = X;
-//		Next(X) = Temp;
-//	} else if (P != Nil){
-//		addressQueue Temp = Next(P);
-//		Next(P) = X;
-//		Next(X) = Temp;
-//	} else {
-//		Next(Rear(*Q)) = X;
-//		Rear(*Q) = X;
-//	}
-	addressQueue current = Front(*Q);
-	addressQueue P = AlokasiQueue(data);
-	
-	if (IsQueueEmpty(*Q)){
-		Front(*Q) = P;
-	} else {
-		if (Kategori(Front(*Q)) < data.kategori)
-	    {
-	        Next(P) = Front(*Q);
-	        Front(*Q) = P;
-	    }
-	    else
-	    {
-	        while (Next(current) != Nil && Kategori(Next(current)) > data.kategori)
-	        {
-	            current = Next(current);
-	        }
-	 
-	        // Either at the ends of the list
-	        // or at required position
-	        Next(P) = Next(current);
-	        Next(current) = P;
-	    }
-	}
-	
-	
-}
-
-/* Mencari data kucing */
-addressQueue searchPosisi(Queue Q, int kategori){
-	addressQueue P = Front(Q);
-	if (IsQueueEmpty(Q)){
-		return P;
-	} else {
-		if (Next(P) == Nil){
-			if (Kategori(P) < kategori){
-				return P;
-			}
-		} else {
-			while (P != Nil){
-				if (Kategori(P) < kategori){
-					return P;
-				}
-				P = Next(P);
-			}
-		}
-		return Nil;
-	}
-}
-
-/* Proses: Mengambil info pada Front(Q) dan mengeluarkannya dari Queue dengan aturan FIFO */ 
-/* I.S. Q mungkin kosong atau Q mungkin berisi antrian */  
-/* F.S. info yang diambil = nilai elemen Front pd I.S. */ 
-/* Front(Q) menunjuk ke next antrian atau diset menjadi NIll, Q mungkin kosong */ 
-void deQueue(Queue *Q){
-	addressQueue P;
-
-	if(IsQueueEmpty(*Q)){
-		printf("\n* Tidak Ada Antrian yang Terdaftar *\n\n");
-	} else{
-
-		P = (*Q).Front;
-		if((*Q).Front == (*Q).Rear){
-			(*Q).Front = Nil;
-            (*Q).Rear = Nil;
-		} else{
-			(*Q).Front = (*Q).Front->next;
-		}
-		P->next = Nil;
-
-		DealokasiQueue(&P);
-	}
-}
-
 /* Mengirimkan banyaknya elemen queue jika Q berisi atrian atau 
    mengirimkan 0 jika Q kosong 
 */ 
@@ -188,38 +92,42 @@ int jumlahAntrian(Queue Q){
 	
 }
 
-/* Menghitung waktu mulai antrian */
-int getWaktuMulai(addressQueue P, int waktuDatang);
+/******************************************************************************************/
+/*                                    Tambah Data Kucing                                  */
+/******************************************************************************************/
 
-/* Menghitung waktu mulai antrian */
-int getWaktuSelesai(addressQueue P, int waktuDatang);
-
-/* Menampilkan antrian 
- * I.S = Antrian belum tampil
- * F.S = Antrian sudah tampil, jika data kosong maka akan tampil "Data antrian kosong!"*/
-void printAntrian(Queue Q){
-	infotype data;
-	addressQueue P;
-	List L;
-	addressList addressL;
-	infoPenyakit penyakitHewan;
-	int i = 1;
+/* Memasukkan info baru ke dalam Queue dengan aturan FIFO */
+/* I.S. Q mungkin kosong atau Q mungkin berisi antrian */ 
+/* F.S. info baru (data) menjadi Rear yang baru dengan node Rear yang lama mengaitkan pointernya ke node yang baru */ 
+void enQueue(Queue *Q, infotype data){
+	addressQueue current = Front(*Q);
+	addressQueue P = AlokasiQueue(data);
 	
-	P = Front(Q);
-	
-   	printf("					===========================================\n");
-  	printf("					           Daftar Antrian Kucing\n");
-   	printf("					===========================================\n");
-
-   	if (IsQueueEmpty(Q)) { // Jika Queue Kosong
-		printf("\n					      Data antrian kosong!\n\n");
-    } else {
-		while(P != Nil){
-			printf("					No. Antrian                 : %d\n", i++);
-			printData(P);		
-			printf("					------------------------------------\n");
-			P = Next(P);
-		}
+	if (IsQueueEmpty(*Q)){
+		Front(*Q) = P;
+	} else {
+		if (Kategori(Front(*Q)) < data.kategori || (Kategori(Front(*Q)) == data.kategori && TimeToMenit(WaktuDatang(Front(*Q))) > TimeToMenit(data.waktuDatang)))
+	    { // untuk data jika kategori salah 
+	        Next(P) = Front(*Q);
+	        Front(*Q) = P;
+	    }
+	    else 
+	    { // untuk data dari posisi antrian kedua sampai akhir
+	    	// mencari data kategori sampai posisi tidak lebih dari
+	        while (Next(current) != Nil && Kategori(Next(current)) > data.kategori)
+	        {
+	            current = Next(current);
+	        }
+	        
+	        // mencari data kategori sampai posisi sama dengan 
+	 		while (Next(current) != Nil && Kategori(Next(current)) == data.kategori && TimeToMenit(WaktuDatang(Next(current))) <= TimeToMenit(data.waktuDatang)){	
+				current = Next(current);
+			}
+			
+	        // akhir atau posisi yang sesuai
+	        Next(P) = Next(current);
+	        Next(current) = P;	
+	    }
 	}
 }
 
@@ -231,6 +139,7 @@ void tambahData(Queue *Q){
 	infotype data;
 	CreateList(&data.listPenyakit);
 	infoPenyakit penyakitHewan;
+	boolean jenisKel;
 	
 	int tempPenyakit[9];
 	int i, totalPenyakit;
@@ -241,11 +150,16 @@ void tambahData(Queue *Q){
 	printf("\n					Nama Kucing                 : "); scanf("%s", &data.namaKucing);
 	fflush(stdin);
 	printf("					Nama Pemilik                : "); scanf("%s", &data.namaPemilik);
-	fflush(stdin);
-	printf("					Jenis Kelamin               : "); scanf("%c", &data.jenisKelamin);
-	fflush(stdin);
-	printf("					Datang di menit ke          : "); scanf("%d", &data.waktuDatang);
-	fflush(stdin);
+	fflush(stdin);	
+	do {
+		printf("					Jenis Kelamin [J/B]         : "); scanf("%c", &data.jenisKelamin);
+		fflush(stdin);
+	} while (!cekInputJK(data.jenisKelamin));
+	
+	do {
+		printf("					Datang di menit ke [HH MM]  : "); scanf("%d %d", &data.waktuDatang.Hour, &data.waktuDatang.Minute);
+		fflush(stdin);
+	} while (!IsJamValid(data.waktuDatang));
 	
 	printf("\n");
 	printPenyakit();
@@ -281,13 +195,39 @@ void tambahData(Queue *Q){
 	
 	data.kategori = getPrioritas(kategoriRingan, kategoriSedang, kategoriBerat);
 	data.waktuPelayanan = getWaktuPelayanan(kategoriRingan, kategoriSedang, kategoriBerat);
-	data.waktuMulai = 0;
-	data.waktuSelesai = 15;
 	enQueue(Q, data);
-	//HitungWaktu(*(&Q));
+	hitungWaktuAntrian(&(*Q));
 
 	printf("\n");
-	printf("					     Anda Sudah Terdaftar!     \n\n");
+	printf("					            Anda Sudah Terdaftar!     \n\n");
+}
+
+/******************************************************************************************/
+/*                                  Pemanggilan Data Kucing                               */
+/******************************************************************************************/
+
+/* Proses: Mengambil info pada Front(Q) dan mengeluarkannya dari Queue dengan aturan FIFO */ 
+/* I.S. Q mungkin kosong atau Q mungkin berisi antrian */  
+/* F.S. info yang diambil = nilai elemen Front pd I.S. */ 
+/* Front(Q) menunjuk ke next antrian atau diset menjadi NIll, Q mungkin kosong */ 
+void deQueue(Queue *Q){
+	addressQueue P;
+
+	if(IsQueueEmpty(*Q)){
+		printf("\n* Tidak Ada Antrian yang Terdaftar *\n\n");
+	} else{
+
+		P = (*Q).Front;
+		if((*Q).Front == (*Q).Rear){
+			(*Q).Front = Nil;
+            (*Q).Rear = Nil;
+		} else{
+			(*Q).Front = (*Q).Front->next;
+		}
+		P->next = Nil;
+
+		DealokasiQueue(&P);
+	}
 }
 
 /* Memanggil data kucing teratas di antrian
@@ -309,7 +249,7 @@ void pemanggilanKucing(Queue *Q){
    	printf("					===========================================\n");
 	
 	if (P == Nil) { // Jika Queue Kosong
-		printf("\n					        Data antrian kosong!\n\n");
+		printf("\n						   Data antrian kosong!\n\n");
     } else {
 		printf("\n					No. Antrian                 : %d\n", i++);
 		printData(P);	
@@ -321,6 +261,7 @@ void pemanggilanKucing(Queue *Q){
 		scanf("%c", &pilih);
 		
 		if(pilih == 'Y' || pilih == 'y'){
+			saveData(Q);
 			deQueue(Q);
 			printf("\n");
 			printf("					              Harap bersabar \n");
@@ -332,22 +273,9 @@ void pemanggilanKucing(Queue *Q){
 	}
 }
 
-/* Mencari alamat dari kucing di queue
- * I.S = Data belum dicari
- * F.S = Data sudah dicari jika ada maka akan mengirimkan alamat,
-         Jika tidak maka akan mengirimkan null
- */
-addressQueue searchData(char namaKucing[25], char namaPemilik[25], Queue Q){
-	addressQueue P = Front(Q);
-	while(P != Nil){
-		if(strcmp(NamaKucing(P),namaKucing) == 0 && strcmp(NamaPemilik(P),namaPemilik) == 0){
-			return P;
-		}
-		P = Next(P);
-	}
-	
-	return Nil;
-}
+/******************************************************************************************/
+/*                                   Pencarian Data Kucing                                */
+/******************************************************************************************/
 
 /* Mencari data kucing di antrian
  * I.S = Data belum dicari
@@ -377,6 +305,27 @@ void pencarianDataKucing(Queue Q){
 		printData(P);	
 	} 
 }
+
+/* Mencari alamat dari kucing di queue
+ * I.S = Data belum dicari
+ * F.S = Data sudah dicari jika ada maka akan mengirimkan alamat,
+         Jika tidak maka akan mengirimkan null
+ */
+addressQueue searchData(char namaKucing[25], char namaPemilik[25], Queue Q){
+	addressQueue P = Front(Q);
+	while(P != Nil){
+		if(strcmp(NamaKucing(P),namaKucing) == 0 && strcmp(NamaPemilik(P),namaPemilik) == 0){
+			return P;
+		}
+		P = Next(P);
+	}
+	
+	return Nil;
+}
+
+/******************************************************************************************/
+/*                                    Perhitungan Antrian                                 */
+/******************************************************************************************/
 
 /* Mengembalikan kategori penyakit kucing 
    1: ringan, 2: sedang, 3: berat 
@@ -420,6 +369,81 @@ int getWaktuPelayanan(int Ringan, int Sedang, int Berat){
 	return (Ringan*15) + (Sedang*30) + (Berat*45);
 }
 
+/* Menghitung waktu mulai antrian */
+TIME getWaktuMulai(addressQueue P, addressQueue P2, Queue Q){
+	TIME mulai;
+	mulai.Hour = 0;
+	mulai.Minute = 0;
+	if (Front(Q) == P){
+		mulai = WaktuDatang(P);
+	} else if (TimeToMenit(WaktuDatang(P)) > TimeToMenit(WaktuSelesai(P2))) {
+		mulai = WaktuDatang(P);
+	} else {
+		mulai = NextNMenit(WaktuSelesai(P2),1);
+	}
+	
+	return mulai;
+}
+
+/* Menghitung waktu mulai antrian */
+TIME getWaktuSelesai(addressQueue P){
+	TIME waktu = WaktuMulai(P);
+	return NextNMenit(waktu, WaktuPelayanan(P));
+}
+
+/* Mengupdate semua waktu di antrian dari awal hingga akhir
+ * I.S = Waktu di antrian belum dihitung dan terupdate
+ * F.S = Waktu di antrian sudah dihitung dan terupdate */
+void hitungWaktuAntrian(Queue *Q){
+	addressQueue P = Front(*Q);
+	addressQueue PrevP;
+	
+	if(P == Front(*Q)){
+		WaktuMulai(P) = getWaktuMulai(P, Nil, *Q);
+		WaktuSelesai(P) = getWaktuSelesai(P);
+		PrevP = P;
+	} 
+	
+	while (Next(PrevP) != Nil){
+		WaktuMulai(Next(PrevP)) = getWaktuMulai(Next(PrevP), PrevP, *Q);
+		WaktuSelesai(Next(PrevP)) = getWaktuSelesai(Next(PrevP));
+		PrevP = Next(PrevP);
+	}
+}
+
+/******************************************************************************************/
+/*                                       Print                                            */
+/******************************************************************************************/
+
+/* Menampilkan antrian 
+ * I.S = Antrian belum tampil
+ * F.S = Antrian sudah tampil, jika data kosong maka akan tampil "Data antrian kosong!"*/
+void printAntrian(Queue Q){
+	infotype data;
+	addressQueue P;
+	List L;
+	addressList addressL;
+	infoPenyakit penyakitHewan;
+	int i = 1;
+	
+	P = Front(Q);
+								
+   	printf("					===========================================\n");
+  	printf("					           Daftar Antrian Kucing\n");
+   	printf("					===========================================\n");
+
+   	if (IsQueueEmpty(Q)) { // Jika Queue Kosong
+		printf("\n						   Data antrian kosong!\n\n");
+    } else {
+		while(P != Nil){
+			printf("					No. Antrian                 : %d\n", i++);
+			printData(P);		
+			printf("					-------------------------------------------\n");
+			P = Next(P);
+		}
+	}
+}
+
 /* I.S   : List penyakit belum tampil */
 /* F.S   : List penyakit sudah tampil */
 void printPenyakit(){
@@ -447,7 +471,7 @@ void PrintInfoPenyakit(List L){
 	addressList addL = First(L);
 	int i = 1;
 	while (addL != Nil){
-		printf("					   %d. %s\n", i++, jenisPenyakit[InfoPenyakit(addL)]);
+		printf("					   %d. %s\n", i++, jenisPenyakit[InfoPenyakit(addL)-1]);
 		addL = Next(addL);
 	}
 }
@@ -457,12 +481,72 @@ void PrintInfoPenyakit(List L){
 void printData(addressQueue P){
 	printf("					Nama Hewan                  : %s\n", NamaKucing(P));
 	printf("					Nama Pemilik                : %s\n", NamaPemilik(P));
-	printf("					Jenis Kelamin               : %c\n", JenisKelamin(P));
-	printf("					Datang di menit ke          : %d\n", WaktuDatang(P));
-	puts("					Penyakit yang Diderita      :");
+	printf("					Jenis Kelamin               : %c ", JenisKelamin(P));
+	if (JenisKelamin(P) == 'J' || JenisKelamin(P) == 'j')
+		printf ("(Jantan)\n");
+	else 
+		printf ("(Betina)\n");
+		
+	printf("					Datang di menit ke          : "); PrintJam(WaktuDatang(P)); 
+	puts("\n					Penyakit yang Diderita      :");
 	PrintInfoPenyakit(ListPenyakit(P));
-	printf("					Nilai Prioritas             : %d\n", Kategori(P));
-	printf("					Estimasi Waktu Pelayanan    : %d\n", WaktuPelayanan(P));
-	printf("					Waktu Mulai Pelayanan       : %d\n", WaktuMulai(P));
-	printf("					Waktu Selesai Pelayanan     : %d\n", WaktuSelesai(P));
+	printf("					Nilai Prioritas             : %d ", Kategori(P));
+	if (Kategori(P) == 1){
+		printf ("(Satu)\n");
+	} else if (Kategori(P) == 2){
+		printf ("(Dua)\n");
+	} else if (Kategori(P) == 3){
+		printf ("(Tiga)\n");
+	} else {
+		printf ("(Empat)\n");
+	}
+	printf("					Estimasi Waktu Pelayanan    : %d Menit", WaktuPelayanan(P));
+	printf("\n					Waktu Mulai Pelayanan       : "); PrintJam(WaktuMulai(P));
+	printf("\n					Waktu Selesai Pelayanan     : "); PrintJam(WaktuSelesai(P));
+	printf("\n");
+}
+
+/******************************************************************************************/
+/*                                    Pengecekan                                          */
+/******************************************************************************************/
+
+/*Mengembalikan nilai cek inputan jenis kelamin
+  Jika inputan J/j/B/b maka menghasilkan hasil true
+  Jika inputan lain maka akan menghasilkan false
+*/
+boolean cekInputJK(char jk){
+	if ( jk == 'J' || jk == 'j' || jk == 'B' || jk == 'b' )
+		return true;
+	else 
+		return false;
+}
+
+void saveData(Queue *Q){
+	addressQueue P;
+	P = (*Q).Front;
+	
+	List L = ListPenyakit(P);
+	addressList addL = First(L);
+	int i = 1;
+	
+	FILE *out=fopen("RiwayatData.txt","a");
+	
+	fprintf(out, "Nama Hewan               : %s\n", NamaKucing(P));
+	fprintf(out, "Nama Pemilik             : %s\n", NamaPemilik(P));
+	fprintf(out, "Jenis Kelamin            : %c\n", JenisKelamin(P));
+	fprintf(out, "Datang di menit ke       : %d\n", WaktuDatang(P));
+	fprintf(out, "Penyakit yang Diderita   :\n");
+	
+	while (addL != Nil){
+		fprintf(out, "        %d. %s\n", i++, jenisPenyakit[InfoPenyakit(addL)-1]);
+		addL = Next(addL);
+	}
+	
+	fprintf(out, "Nilai Prioritas          : %d\n", Kategori(P));
+	fprintf(out, "Estimasi Waktu Pelayanan : %d\n", WaktuPelayanan(P));
+	fprintf(out, "Waktu Mulai Pelayanan    : %d\n", WaktuMulai(P));
+	fprintf(out, "Waktu Selesai Pelayanan  : %d\n", WaktuSelesai(P));
+	fprintf(out, "------------------------------------\n\n");
+
+	fclose(out);
 }

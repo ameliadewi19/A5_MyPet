@@ -3,8 +3,9 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "boolean.h"
-#include "list.h"
+#include "../boolean.h"
+#include "../ADT Time/time.h"
+#include "../ADT List/list.h"
 
 #define Front(Q) (Q).Front 
 #define Rear(Q) (Q).Rear 
@@ -27,10 +28,10 @@ typedef struct infoPelanggan {
 	char namaKucing[25]; // Nama Hewan
 	char namaPemilik[25]; // Nama Pemilik
 	char jenisKelamin; // Jenis Kelamin Hewan
-	int waktuDatang; // Waktu Kedatangan
+	TIME waktuDatang; // Waktu Kedatangan
 	int waktuPelayanan; // Lama Waktu Pelayanan
-	int waktuMulai; // Waktu Kucing Mulai Dilayani
-	int waktuSelesai; // Waktu Kucing Selesai Dilayani
+	TIME waktuMulai; // Waktu Kucing Mulai Dilayani
+	TIME waktuSelesai; // Waktu Kucing Selesai Dilayani
 	int kategori; // Nilai kategori prioritas penyakit
 	List listPenyakit; // List Penyakit Hewan
 }infoPelanggan;
@@ -105,10 +106,15 @@ int getWaktuPenyakit(int Penyakit);
 int getWaktuPelayanan(int Ringan, int Sedang, int Berat);
 
 /* Menghitung waktu mulai antrian */
-int getWaktuMulai(addressQueue P, int waktuDatang);
+TIME getWaktuMulai(addressQueue P2, addressQueue P, Queue Q);
 
 /* Menghitung waktu mulai antrian */
-int getWaktuSelesai(addressQueue P, int waktuDatang);
+TIME getWaktuSelesai(addressQueue P);
+
+/* Mengupdate semua waktu di antrian dari awal hingga akhir
+ * I.S = Waktu di antrian belum dihitung dan terupdate
+ * F.S = Waktu di antrian sudah dihitung dan terupdate */
+void hitungWaktuAntrian(Queue *Q);
 
 /* Menampilkan antrian 
  * I.S = Antrian belum tampil
@@ -144,11 +150,6 @@ void pencarianDataKucing(Queue Q);
 /* Mencari data kucing */
 addressQueue searchPosisi(Queue Q, int kategori);
 
-/* Mengupdate semua waktu di antrian dari awal hingga akhir
- * I.S = Waktu di antrian belum terupdate
- * F.S = Waktu di antrian sudah terupdate */
-void updateWaktuAntrian(Queue *Q);
-
 /* I.S   : List penyakit belum tampil */
 /* F.S   : List penyakit sudah tampil */
 void printPenyakit();
@@ -162,5 +163,13 @@ void PrintInfoPenyakit(List L);
 /* I.S   : Data Belum Tampil 	*/
 /* F.S   : Data sudah tampil dan code menjadi lebih ringkas */
 void printData(addressQueue P);
+
+/* Mengirimkan hasil cek kevalidan inputan jenis kelamin kucing*/
+/* Jika inputan J/j/B/b maka akan mengirimkan false */
+boolean cekInputJK(char jk);
+
+/* I.S   : Data kucing belum masuk ke file 	*/
+/* F.S   : Data kucing sudah masuk ke file */
+void saveData(Queue *Q);
 
 #endif // QUEUE_H

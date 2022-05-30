@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-#include "queue.h"
-#include "list.h"
+#include "ADT Queue/queue.h"
+#include "ADT List/list.h"
 
 void showMenu(){
 	system("cls");
-	printf("\n\n\n\n\n				   ____ ____   _   _    ______   ______   _______");
+	printf("\n\n\n\n\n\n				   ____ ____   _   _    ______   ______   _______");
 	printf("\n				  |  _ V _  | | | | |  |  __  | |  ____| |__   __|");
 	printf("\n				  | | | | | | | |_| |  | |__| | | |____     | |");
 	printf("\n				  | | | | | | |_   _|  |  ____| |  ____|    | |");

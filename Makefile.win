@@ -4,15 +4,15 @@
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = main.o list.o queue.o
-LINKOBJ  = main.o list.o queue.o
+OBJ      = main.o "ADT\ Time/time.o" "ADT\ List/list.o" "ADT\ Queue/queue.o"
+LINKOBJ  = main.o "ADT Time/time.o" "ADT List/list.o" "ADT Queue/queue.o"
 LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc -g3 -g3
 INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
 CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
 BIN      = A5_MyPet.exe
 CXXFLAGS = $(CXXINCS) -g3 -g3
 CFLAGS   = $(INCS) -g3 -g3
-DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\devcpp.exe INTERNAL_DEL
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\DevCpp.exe INTERNAL_DEL
 
 .PHONY: all all-before all-after clean clean-custom
 
@@ -27,8 +27,11 @@ $(BIN): $(OBJ)
 main.o: main.c
 	$(CC) -c main.c -o main.o $(CFLAGS)
 
-list.o: list.c
-	$(CC) -c list.c -o list.o $(CFLAGS)
+"ADT\ Time/time.o": ADT\ Time/time.c
+	$(CC) -c "ADT Time/time.c" -o "ADT Time/time.o" $(CFLAGS)
 
-queue.o: queue.c
-	$(CC) -c queue.c -o queue.o $(CFLAGS)
+"ADT\ List/list.o": ADT\ List/list.c
+	$(CC) -c "ADT List/list.c" -o "ADT List/list.o" $(CFLAGS)
+
+"ADT\ Queue/queue.o": ADT\ Queue/queue.c
+	$(CC) -c "ADT Queue/queue.c" -o "ADT Queue/queue.o" $(CFLAGS)

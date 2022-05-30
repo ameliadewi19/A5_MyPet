@@ -1,7 +1,7 @@
 #ifndef list_H
 #define list_H 
 
-#include "boolean.h"
+#include "../boolean.h"
 #include <stdlib.h>
 
 #define Nil NULL
@@ -51,6 +51,14 @@ void DealokasiList(addressList *P);
 /* I.S  :   P  terdefinisi         	*/
 /* F.S  :   P dikembalikan ke  sistem 	*/
 /*   	    Melakukan  dealokasi, pengembalian address  P */
+
+
+/*   ** PENCARIAN SEBUAH ELEMEN LIST **   */
+
+boolean FSearch(List L, addressList P);
+/* Mencari apakah  ada elemen List yang  beralamat   P   */
+/* Mengirimkan true jika ada, false jika tidak ada  	 */
+
 
 /* ** PRIMITIF BERDASARKAN NILAI ** */
 
@@ -102,6 +110,11 @@ void DelAfter(List *L, infoPenyakit *X, infoPenyakit Y);
 /* Penambahan Elemen Berdasarkan Alamat 		*/
 
 /* *************PROSES SEMUA ELEMEN ****************   */
+void PrintInfo(List L, char **C);
+/* I.S   : List mungkin kosong 	*/
+/* F.S   : Jika list tidak kosong, semua info yang disimpan pada */
+/*         elemen list di-print					 */
+/*         Jika list kosong, hanya menuliskan "List Kosong"	 */
 
 int JumlahPenyakit(List L);
 /* Mengirimkan banyaknya elemen list, mengirimkan Nol jika kosong */
