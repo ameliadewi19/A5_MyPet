@@ -48,138 +48,186 @@ typedef struct {
     addressQueue Rear; // antrian belakang
 } Queue;
 
-/***** Manajemen memori *****/
 /* Mengirimkan address hasil alokasi sebuah elemen dengan info X.
- * Jika alokasi berhasil, modul mengembalikan P; Info(P) = X, Next(P) = NULL.
- * P adalah pointer yang menunjuk ke node Queue sebagai hasil alokasi.
- * Jika alokasi gagal, modul mengembalikan NULL.
- */
+   Jika alokasi berhasil, modul mengembalikan P; Info(P) = X, Next(P) = NULL.
+   P adalah pointer yang menunjuk ke node Queue sebagai hasil alokasi.
+   Jika alokasi gagal, modul mengembalikan NULL. */
+// Author : Tabitha Salsabila Permana
 addressQueue AlokasiQueue(infotype X);
 
-/* Melakukan dealokasi elemen P (pointer menunjuk ke alamat node queue).
- * I.S.: P terdefinisi.
- * F.S.: P dikembalikan ke sistem.
- */
+// Melakukan dealokasi elemen P (pointer menunjuk ke alamat node queue).
+// I.S.: P terdefinisi.
+// F.S.: P dikembalikan ke sistem.
+// Author : Fadhil Radja Assyidiq
 void DealokasiQueue(addressQueue *P);
 
-/***** Manajemen Queue *****/
-	/* Membuat sebuah Queue kosong dengan Front(Q) = Nil dan Rear (Q) = Nil 
-   	I.S. Belum terbentuk Queue 
-   	F.S. Sudah terbentuk Queue
-	*/	
+/******************************************************************************************/
+/*                                      Manajemen Memory                                  */
+/******************************************************************************************/
+
+// Membuat sebuah Queue kosong dengan Front(Q) = Nil dan Rear (Q) = Nil 
+// I.S. Belum terbentuk Queue 
+// F.S. Sudah terbentuk Queue	
+// Author : Amelia Dewi Agustiani
 void CreateQueue(Queue *Q);
 
 /* Mengetahui apakah Queue kosong atau tidak. 
    mengirimkan true, jika Queue Kosong yaitu Front(Q) = Nil dan Rear (Q) = Nil
-   Sebaliknya false
-*/
+   Sebaliknya false */
+// Author : Tabitha Salsabila Permana
 bool IsQueueEmpty(Queue Q);
 
-/* Memasukkan info baru ke dalam Queue dengan aturan FIFO */
-/* I.S. Q mungkin kosong atau Q mungkin berisi antrian */ 
-/* F.S. info baru (data) menjadi Rear yang baru dengan node Rear yang lama mengaitkan pointernya ke node yang baru */ 
+/* Mengirimkan banyaknya elemen queue jika Q berisi atrian atau 
+   mengirimkan 0 jika Q kosong */
+// Author : Fadhil Radja Assyidiq
+int jumlahAntrian(Queue Q);
+
+/******************************************************************************************/
+/*                                    Tambah Data Kucing                                  */
+/******************************************************************************************/
+
+// Memasukkan info baru ke dalam Queue dengan aturan FIFO 
+// I.S. Q mungkin kosong atau Q mungkin berisi antrian  
+// F.S. info baru (data) menjadi Rear yang baru dengan node Rear yang lama mengaitkan pointernya ke node yang baru
+// Author : Amelia Dewi Agustiani
 void enQueue(Queue *Q, infotype data);
 
-/* Proses: Mengambil info pada Front(Q) dan mengeluarkannya dari Queue dengan aturan FIFO */ 
-/* I.S. Q mungkin kosong atau Q mungkin berisi antrian */  
-/* F.S. info yang diambil = nilai elemen Front pd I.S. */ 
-/* Front(Q) menunjuk ke next antrian atau diset menjadi NIll, Q mungkin kosong */ 
+// Melakukan registrasi penambahan data pelanggan 
+// I.S = Q mungkin kosong atau Q mungkin berisi antrian
+// F.S = Data baru ditambahkan ke antrian 
+// Author : Tabitha Salsabila Permana
+void tambahData(Queue *Q);
+
+/******************************************************************************************/
+/*                                  Pemanggilan Data Kucing                               */
+/******************************************************************************************/
+
+// Proses: Mengambil info pada Front(Q) dan mengeluarkannya dari Queue dengan aturan FIFO
+// I.S. Q mungkin kosong atau Q mungkin berisi antrian 
+// F.S. info yang diambil = nilai elemen Front pd I.S.  
+// Author : Fadhil Radja Assyidiq
 void deQueue(Queue *Q);
 
-/* Mengirimkan banyaknya elemen queue jika Q berisi atrian atau 
-   mengirimkan 0 jika Q kosong 
-*/ 
-int jumlahAntrian(Queue Q); 
+// Memanggil data kucing teratas di antrian
+// I.S = Data kucing belum dipanggil (dequeue)
+/* F.S = Data kucing sudah dipanggil (dequeue) 
+        jika antrian kosong maka akan tampil "Data antrian kosong!"*/
+// Author : Fadhil Radja Assyidiq        
+void pemanggilanKucing(Queue *Q, Queue *sedangDiproses);
 
-/* Menentukan nilai prioritas dari suatu antrian berdasarkan jumlah penyakit yang diderita */
-int getPrioritas(int Ringan, int Sedang, int Berat);
+/******************************************************************************************/
+/*                                   Pencarian Data Kucing                                */
+/******************************************************************************************/
+
+// Mencari data kucing di antrian
+// I.S = Data belum dicari
+/* F.S = Data kucing akan muncul jika ada di antrian
+         Jika tidak ada maka akan tampil "Data kucing tidak ada di antrian!" */
+// Author : Amelia Dewi Agustiani
+void pencarianDataKucing(Queue Q);
+
+// Mencari alamat dari kucing di queue
+// I.S = Data belum dicari
+/* F.S = Data sudah dicari jika ada maka akan mengirimkan alamat,
+         Jika tidak maka akan mengirimkan null */
+// Author : Amelia Dewi Agustiani
+addressQueue searchData(char namaKucing[25], char namaPemilik[25], Queue Q);
+
+/******************************************************************************************/
+/*                                    Perhitungan Antrian                                 */
+/******************************************************************************************/
 
 /* Mengembalikan kategori penyakit kucing 
    1: ringan, 2: sedang, 3: berat 
 */
-int getKategoriPenyakit(int Penyakit);	
+// Author : Amelia Dewi Agustiani
+int getKategoriPenyakit(int Penyakit);
 
 /* Mengembalikan waktu estimasi pelayanan berdasarkan nilai prioritas antrian */
+// Author : Amelia Dewi Agustiani
 int getWaktuPenyakit(int Penyakit);
 
+/* Mengembalikan kategori prioritas penyakit kucing */
+// Author : Amelia Dewi Agustiani
+int getPrioritas(int Ringan, int Sedang, int Berat);
+
 /* Menghitung waktu estimasi pelayanan */
+// Author : Fadhil Radja Assyidiq
 int getWaktuPelayanan(int Ringan, int Sedang, int Berat);
 
 /* Menghitung waktu mulai antrian */
-TIME getWaktuMulai(addressQueue P2, addressQueue P, Queue Q);
+// Author : Amelia Dewi Agustiani
+TIME getWaktuMulai(addressQueue P, addressQueue P2, Queue Q);
 
 /* Menghitung waktu mulai antrian */
+// Author : Tabitha Salsabila Permana
 TIME getWaktuSelesai(addressQueue P);
 
-/* Mengupdate semua waktu di antrian dari awal hingga akhir
- * I.S = Waktu di antrian belum dihitung dan terupdate
- * F.S = Waktu di antrian sudah dihitung dan terupdate */
+// Mengupdate semua waktu di antrian dari awal hingga akhir
+// I.S = Waktu di antrian belum dihitung dan terupdate
+// F.S = Waktu di antrian sudah dihitung dan terupdate 
+// Author : Amelia Dewi Agustiani
 void hitungWaktuAntrian(Queue *Q);
 
-/* Menampilkan antrian 
- * I.S = Antrian belum tampil
- * F.S = Antrian sudah tampil, jika data kosong maka akan tampil "Data antrian kosong!"*/
+/******************************************************************************************/
+/*                                       Print                                            */
+/******************************************************************************************/
+
+// Menampilkan antrian 
+// I.S = Antrian belum tampil
+// F.S = Antrian sudah tampil, jika data kosong maka akan tampil "Data antrian kosong!"*/
+// Author : Amelia Dewi Agustiani
 void printAntrian(Queue Q);
 
-/* Melakukan registrasi penambahan data pelanggan 
- * I.S = Q mungkin kosong atau Q mungkin berisi antrian
- * F.S = Data baru ditambahkan ke antrian */
-void tambahData(Queue *Q);
- 
-/* Memanggil data kucing teratas di antrian
- * I.S = Data kucing belum dipanggil (dequeue)
- * F.S = Data kucing sudah dipanggil (dequeue) 
-         jika antrian kosong maka akan tampil "Data antrian kosong!"
- */
-void pemanggilanKucing(Queue *Q, Queue *sedangDiproses);
-
-/* Mencari data kucing di antrian
- * I.S = Data kucing belum dicari
- * F.S = Jika ada di antrian maka akan muncul data kucing
-         Jika tidak ada maka akan tampil "Data tidak ada di antrian"
- */
-addressQueue searchData(char namaKucing[25], char namaPemilik[25], Queue Q);
-
-/* Mencari data kucing di antrian
- * I.S = Data belum dicari
- * F.S = Data kucing akan muncul jika ada di antrian
-         Jika tidak ada maka akan tampil "Data kucing tidak ada di antrian!"
- */
-void pencarianDataKucing(Queue Q);
-
-/* Mencari data kucing */
-addressQueue searchPosisi(Queue Q, int kategori);
-
+// Menampilkan list penyakit
 /* I.S   : List penyakit belum tampil */
 /* F.S   : List penyakit sudah tampil */
+// Author : Tabitha Salsabila Permana
 void printPenyakit();
-
-/* I.S   : List mungkin kosong 	*/
-/* F.S   : Jika list tidak kosong, semua info yang disimpan pada */
-/*         elemen list di-print					 */
-/*         Jika list kosong, hanya menuliskan "List Kosong"	 */
+ 
+// I.S   : List mungkin kosong 	
+/* F.S   : Jika list tidak kosong, semua info yang disimpan pada
+           elemen list di-print					 
+           Jika list kosong, hanya menuliskan "List Kosong"	*/
+// Author : Amelia Dewi Agustiani
 void PrintInfoPenyakit(List L);
 
-/* I.S   : Data Belum Tampil 	*/
-/* F.S   : Data sudah tampil dan code menjadi lebih ringkas */
+// Menampilkan data kucing
+// I.S   : Data Belum Tampil 	
+// F.S   : Data sudah tampil dan code menjadi lebih ringkas 
+// Author : Amelia Dewi Agustiani
 void printData(addressQueue P);
 
-/* Mengirimkan hasil cek kevalidan inputan jenis kelamin kucing*/
-/* Jika inputan J/j/B/b maka akan mengirimkan true */
+// Menampilkan data kucing yang sedang di proses
+// I.S : data kucing yang sedang di proses belum tampil
+// F.S : data kucing yang sedang di proses sudah tampil
+// Author : Amelia Dewi Agustiani
+void printDataDiproses(Queue sedangDiproses);
+
+/******************************************************************************************/
+/*                                    Pengecekan                                          */
+/******************************************************************************************/
+
+/*Mengembalikan nilai cek inputan jenis kelamin
+  Jika inputan J/j/B/b maka menghasilkan hasil true
+  Jika inputan lain maka akan menghasilkan false */
+// Author : Amelia Dewi Agustiani
 boolean cekInputJK(char jk);
 
 /* Mengirimkan hasil cek kevalidan inputan jumlah jenis penyakit*/
 /* Jika inputan antara 1 sampai 10 maka akan mengirimkan true */
+// Author : Amelia Dewi Agustiani
 boolean cekInputJumlahPenyakit(int jumlahPenyakit);
 
 /* Mengirimkan hasil cek kevalidan inputan jumlah jenis penyakit*/
 /* Jika inputan antara 1 sampai 10 maka akan mengirimkan true */
+// Author : Amelia Dewi Agustiani
 boolean cekInputNomorPenyakit(int jumlahPenyakit, int penyakit[]);
 
-/* I.S   : Data kucing belum masuk ke file 	*/
-/* F.S   : Data kucing sudah masuk ke file */
+// Menyimpan data riwayat ke file
+// I.S : Data kucing belum tersimpan di file
+// F.S : Data kucing sudah tersimpan 
+// Author : Fadhil Radja Assyidiq
 void saveData(Queue *Q);
-
-void printDataDiproses(Queue sedangDiproses);
 
 #endif // QUEUE_H

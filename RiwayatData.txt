@@ -466,3 +466,16 @@ Waktu Mulai Pelayanan    : 9
 Waktu Selesai Pelayanan  : 9
 ------------------------------------
 
+Nama Hewan               : brownie
+Nama Pemilik             : budi
+Jenis Kelamin            : B
+Datang di menit ke       : 09:30
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 09:30
+Waktu Selesai Pelayanan  : 10:00
+------------------------------------
+

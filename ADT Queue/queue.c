@@ -378,12 +378,13 @@ int getPrioritas(int Ringan, int Sedang, int Berat){
 }
 
 /* Menghitung waktu estimasi pelayanan */
-// 
+// Author : Fadhil Radja Assyidiq
 int getWaktuPelayanan(int Ringan, int Sedang, int Berat){
 	return (Ringan*15) + (Sedang*30) + (Berat*45);
 }
 
 /* Menghitung waktu mulai antrian */
+// Author : Amelia Dewi Agustiani
 TIME getWaktuMulai(addressQueue P, addressQueue P2, Queue Q){
 	TIME mulai;
 	mulai.Hour = 0;
@@ -404,14 +405,16 @@ TIME getWaktuMulai(addressQueue P, addressQueue P2, Queue Q){
 }
 
 /* Menghitung waktu mulai antrian */
+// Author : Tabitha Salsabila Permana
 TIME getWaktuSelesai(addressQueue P){
 	TIME waktu = WaktuMulai(P);
 	return NextNMenit(waktu, WaktuPelayanan(P));
 }
 
-/* Mengupdate semua waktu di antrian dari awal hingga akhir
- * I.S = Waktu di antrian belum dihitung dan terupdate
- * F.S = Waktu di antrian sudah dihitung dan terupdate */
+// Mengupdate semua waktu di antrian dari awal hingga akhir
+// I.S = Waktu di antrian belum dihitung dan terupdate
+// F.S = Waktu di antrian sudah dihitung dan terupdate 
+// Author : Amelia Dewi Agustiani
 void hitungWaktuAntrian(Queue *Q){
 	addressQueue P = Front(*Q);
 	addressQueue PrevP;
@@ -433,9 +436,10 @@ void hitungWaktuAntrian(Queue *Q){
 /*                                       Print                                            */
 /******************************************************************************************/
 
-/* Menampilkan antrian 
- * I.S = Antrian belum tampil
- * F.S = Antrian sudah tampil, jika data kosong maka akan tampil "Data antrian kosong!"*/
+// Menampilkan antrian 
+// I.S = Antrian belum tampil
+// F.S = Antrian sudah tampil, jika data kosong maka akan tampil "Data antrian kosong!"*/
+// Author : Amelia Dewi Agustiani
 void printAntrian(Queue Q){
 	infotype data;
 	addressQueue P;
@@ -462,8 +466,10 @@ void printAntrian(Queue Q){
 	}
 }
 
+// Menampilkan list penyakit
 /* I.S   : List penyakit belum tampil */
 /* F.S   : List penyakit sudah tampil */
+// Author : Tabitha Salsabila Permana
 void printPenyakit(){
 	printf("                                        ++=======================================++\n");
 	printf("                                        ||            List Penyakit              ||\n");
@@ -481,10 +487,12 @@ void printPenyakit(){
 	printf("                                        ++=======================================++\n");
 }
 
-/* I.S   : List mungkin kosong 	*/
-/* F.S   : Jika list tidak kosong, semua info yang disimpan pada */
-/*         elemen list di-print					 */
-/*         Jika list kosong, hanya menuliskan "List Kosong"	 */
+// 
+// I.S   : List mungkin kosong 	
+/* F.S   : Jika list tidak kosong, semua info yang disimpan pada
+           elemen list di-print					 
+           Jika list kosong, hanya menuliskan "List Kosong"	*/
+// Author : Amelia Dewi Agustiani
 void PrintInfoPenyakit(List L){
 	addressList addL = First(L);
 	int i = 1;
@@ -494,8 +502,10 @@ void PrintInfoPenyakit(List L){
 	}
 }
 
-/* I.S   : Data Belum Tampil 	*/
-/* F.S   : Data sudah tampil dan code menjadi lebih ringkas */
+// Menampilkan data kucing
+// I.S   : Data Belum Tampil 	
+// F.S   : Data sudah tampil dan code menjadi lebih ringkas 
+// Author : Amelia Dewi Agustiani
 void printData(addressQueue P){
 	printf("					Nama Hewan                  : %s\n", NamaKucing(P));
 	printf("					Nama Pemilik                : %s\n", NamaPemilik(P));
@@ -524,8 +534,11 @@ void printData(addressQueue P){
 	printf("\n");
 }
 
+// Menampilkan data kucing yang sedang di proses
+// I.S : data kucing yang sedang di proses belum tampil
+// F.S : data kucing yang sedang di proses sudah tampil
+// Author : Amelia Dewi Agustiani
 void printDataDiproses(Queue sedangDiproses){	
-   	
    	printf("\n\n\n\n");
    	printf("				            *** KUCING YANG SEDANG DIPROSES ***\n\n");
 	printf("				-----------------------------------------------------------\n");
@@ -547,15 +560,14 @@ void printDataDiproses(Queue sedangDiproses){
 	printf("				-----------------------------------------------------------\n\n");
 }
 
-
 /******************************************************************************************/
 /*                                    Pengecekan                                          */
 /******************************************************************************************/
 
 /*Mengembalikan nilai cek inputan jenis kelamin
   Jika inputan J/j/B/b maka menghasilkan hasil true
-  Jika inputan lain maka akan menghasilkan false
-*/
+  Jika inputan lain maka akan menghasilkan false */
+// Author : Amelia Dewi Agustiani
 boolean cekInputJK(char jk){
 	if ( jk == 'J' || jk == 'j' || jk == 'B' || jk == 'b' )
 		return true;
@@ -567,6 +579,7 @@ boolean cekInputJK(char jk){
 
 /* Mengirimkan hasil cek kevalidan inputan jumlah jenis penyakit*/
 /* Jika inputan antara 1 sampai 10 maka akan mengirimkan true */
+// Author : Amelia Dewi Agustiani
 boolean cekInputJumlahPenyakit(int jumlahPenyakit){
 	if ( jumlahPenyakit >= 1 && jumlahPenyakit <= 9 )
 		return true;
@@ -578,6 +591,7 @@ boolean cekInputJumlahPenyakit(int jumlahPenyakit){
 
 /* Mengirimkan hasil cek kevalidan inputan jumlah jenis penyakit*/
 /* Jika inputan antara 1 sampai 10 maka akan mengirimkan true */
+// Author : Amelia Dewi Agustiani
 boolean cekInputNomorPenyakit(int jumlahPenyakit, int penyakit[]){
 	int i, j;
 	
@@ -602,6 +616,10 @@ boolean cekInputNomorPenyakit(int jumlahPenyakit, int penyakit[]){
 	return true;
 }
 
+// Menyimpan data riwayat ke file
+// I.S : Data kucing belum tersimpan di file
+// F.S : Data kucing sudah tersimpan 
+// Author : Fadhil Radja Assyidiq
 void saveData(Queue *Q){
 	addressQueue P;
 	P = (*Q).Front;
