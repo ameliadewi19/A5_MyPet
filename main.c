@@ -25,10 +25,9 @@ void showMenu(){
 	printf("\n");
 	printf("\n					     1. Registrasi Data");
 	printf("\n					     2. Daftar Antrian");
-	printf("\n					     3. Data yang Sedang Diproses");
-	printf("\n					     4. Pemanggilan Data");
-	printf("\n					     5. Mencari Data Kucing");
-	printf("\n					     6. Quit");
+	printf("\n					     3. Pemanggilan Data");
+	printf("\n					     4. Mencari Data Kucing");
+	printf("\n					     5. Quit");
 	printf("\n");
 }
 
