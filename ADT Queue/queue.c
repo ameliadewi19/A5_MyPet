@@ -3,16 +3,9 @@
 #include <string.h>
 #include "../boolean.h"
 #include "queue.h"
-
-/***** Manajemen memori *****/
-/* Mengirimkan address hasil alokasi sebuah elemen dengan info X.
- * Jika alokasi berhasil, modul mengembalikan P; Info(P) = X, Next(P) = NULL.
- * P adalah pointer yang menunjuk ke node Queue sebagai hasil alokasi.
- * Jika alokasi gagal, modul mengembalikan NULL.
- */
  
-TIME waktuSelesaiAwal;
-boolean awalHari = false;
+TIME waktuSelesaiAwal; 		// untuk menampung waktu selesai
+boolean awalHari = false; 	// untuk menentukan apakah hari merupakan awal atau bukan
 
 char *jenisPenyakit[9] = {
 	"Penyakit Kulit",
@@ -27,10 +20,10 @@ char *jenisPenyakit[9] = {
 }; 
  
 /* Mengirimkan address hasil alokasi sebuah elemen dengan info X.
- * Jika alokasi berhasil, modul mengembalikan P; Info(P) = X, Next(P) = NULL.
- * P adalah pointer yang menunjuk ke node Queue sebagai hasil alokasi.
- * Jika alokasi gagal, modul mengembalikan NULL.
- */
+   Jika alokasi berhasil, modul mengembalikan P; Info(P) = X, Next(P) = NULL.
+   P adalah pointer yang menunjuk ke node Queue sebagai hasil alokasi.
+   Jika alokasi gagal, modul mengembalikan NULL. */
+// Author : Tabitha Salsabila Permana
 addressQueue AlokasiQueue(infotype X){
 	addressQueue P;
     P = (addressQueue)malloc(sizeof(NodeQueue));
@@ -44,21 +37,23 @@ addressQueue AlokasiQueue(infotype X){
 	}
 }
 
-
-/* Melakukan dealokasi elemen P (pointer menunjuk ke alamat node queue).
- * I.S.: P terdefinisi.
- * F.S.: P dikembalikan ke sistem.
- */
+// Melakukan dealokasi elemen P (pointer menunjuk ke alamat node queue).
+// I.S.: P terdefinisi.
+// F.S.: P dikembalikan ke sistem.
+// Author : Fadhil Radja Assyidiq
 void DealokasiQueue(addressQueue *P){
 	Next(*P) = Nil;
     free(*P);
 }
 
-/***** Manajemen Queue *****/
-	/* Membuat sebuah Queue kosong dengan Front(Q) = Nil dan Rear (Q) = Nil 
-   	I.S. Belum terbentuk Queue 
-   	F.S. Sudah terbentuk Queue
-	*/	
+/******************************************************************************************/
+/*                                      Manajemen Memory                                  */
+/******************************************************************************************/
+
+// Membuat sebuah Queue kosong dengan Front(Q) = Nil dan Rear (Q) = Nil 
+// I.S. Belum terbentuk Queue 
+// F.S. Sudah terbentuk Queue	
+// Author : Amelia Dewi Agustiani
 void CreateQueue(Queue *Q){
 	Front(*Q) = Nil;
 	Rear(*Q) = Nil;
@@ -66,8 +61,8 @@ void CreateQueue(Queue *Q){
 
 /* Mengetahui apakah Queue kosong atau tidak. 
    mengirimkan true, jika Queue Kosong yaitu Front(Q) = Nil dan Rear (Q) = Nil
-   Sebaliknya false
-*/
+   Sebaliknya false */
+// Author : Tabitha Salsabila Permana
 bool IsQueueEmpty(Queue Q){
 	if (Front(Q) == Nil && Rear(Q) == Nil) {
 		return true;
@@ -77,8 +72,8 @@ bool IsQueueEmpty(Queue Q){
 }
 
 /* Mengirimkan banyaknya elemen queue jika Q berisi atrian atau 
-   mengirimkan 0 jika Q kosong 
-*/ 
+   mengirimkan 0 jika Q kosong */
+// Author : Fadhil Radja Assyidiq
 int jumlahAntrian(Queue Q){
 	addressQueue P;
     int jmlElement = 0;
@@ -91,17 +86,17 @@ int jumlahAntrian(Queue Q){
             jmlElement++;
             P = Next(P);
         } while(P != Nil);
-	}
-	
+	}	
 }
 
 /******************************************************************************************/
 /*                                    Tambah Data Kucing                                  */
 /******************************************************************************************/
 
-/* Memasukkan info baru ke dalam Queue dengan aturan FIFO */
-/* I.S. Q mungkin kosong atau Q mungkin berisi antrian */ 
-/* F.S. info baru (data) menjadi Rear yang baru dengan node Rear yang lama mengaitkan pointernya ke node yang baru */ 
+// Memasukkan info baru ke dalam Queue dengan aturan FIFO 
+// I.S. Q mungkin kosong atau Q mungkin berisi antrian  
+// F.S. info baru (data) menjadi Rear yang baru dengan node Rear yang lama mengaitkan pointernya ke node yang baru
+// Author : Amelia Dewi Agustiani
 void enQueue(Queue *Q, infotype data){
 	addressQueue current = Front(*Q);
 	addressQueue P = AlokasiQueue(data);
@@ -134,9 +129,10 @@ void enQueue(Queue *Q, infotype data){
 	}
 }
 
-/* Melakukan registrasi penambahan data pelanggan 
- * I.S = Q mungkin kosong atau Q mungkin berisi antrian
- * F.S = Data baru ditambahkan ke antrian */
+// Melakukan registrasi penambahan data pelanggan 
+// I.S = Q mungkin kosong atau Q mungkin berisi antrian
+// F.S = Data baru ditambahkan ke antrian 
+// Author : Tabitha Salsabila Permana
 void tambahData(Queue *Q){
 	system("cls");
 	infotype data;
@@ -215,10 +211,10 @@ void tambahData(Queue *Q){
 /*                                  Pemanggilan Data Kucing                               */
 /******************************************************************************************/
 
-/* Proses: Mengambil info pada Front(Q) dan mengeluarkannya dari Queue dengan aturan FIFO */ 
-/* I.S. Q mungkin kosong atau Q mungkin berisi antrian */  
-/* F.S. info yang diambil = nilai elemen Front pd I.S. */ 
-/* Front(Q) menunjuk ke next antrian atau diset menjadi NIll, Q mungkin kosong */ 
+// Proses: Mengambil info pada Front(Q) dan mengeluarkannya dari Queue dengan aturan FIFO
+// I.S. Q mungkin kosong atau Q mungkin berisi antrian 
+// F.S. info yang diambil = nilai elemen Front pd I.S.  
+// Author : Fadhil Radja Assyidiq
 void deQueue(Queue *Q){
 	addressQueue P;
 
@@ -239,11 +235,11 @@ void deQueue(Queue *Q){
 	}
 }
 
-/* Memanggil data kucing teratas di antrian
- * I.S = Data kucing belum dipanggil (dequeue)
- * F.S = Data kucing sudah dipanggil (dequeue) 
-         jika antrian kosong maka akan tampil "Data antrian kosong!"
- */
+// Memanggil data kucing teratas di antrian
+// I.S = Data kucing belum dipanggil (dequeue)
+/* F.S = Data kucing sudah dipanggil (dequeue) 
+        jika antrian kosong maka akan tampil "Data antrian kosong!"*/
+// Author : Fadhil Radja Assyidiq        
 void pemanggilanKucing(Queue *Q, Queue *sedangDiproses){
 	system ("cls");
 	addressQueue P;
@@ -270,9 +266,8 @@ void pemanggilanKucing(Queue *Q, Queue *sedangDiproses){
 		scanf("%c", &pilih);
 		
 		if(pilih == 'Y' || pilih == 'y'){
-			saveData(Q);
-			int waktu = WaktuPelayanan(Front(*Q));
-			Front(*sedangDiproses) = AlokasiQueue(Info(Front(*Q)));
+			saveData(Q); // menyimpan data ke file  
+			Front(*sedangDiproses) = AlokasiQueue(Info(Front(*Q))); // menyimpan data ke data yang sedang di proses
 			if(awalHari == false){
 				waktuSelesaiAwal = WaktuSelesai(Front(*Q));
 				awalHari = true;
@@ -292,11 +287,11 @@ void pemanggilanKucing(Queue *Q, Queue *sedangDiproses){
 /*                                   Pencarian Data Kucing                                */
 /******************************************************************************************/
 
-/* Mencari data kucing di antrian
- * I.S = Data belum dicari
- * F.S = Data kucing akan muncul jika ada di antrian
-         Jika tidak ada maka akan tampil "Data kucing tidak ada di antrian!"
- */
+// Mencari data kucing di antrian
+// I.S = Data belum dicari
+/* F.S = Data kucing akan muncul jika ada di antrian
+         Jika tidak ada maka akan tampil "Data kucing tidak ada di antrian!" */
+// Author : Amelia Dewi Agustiani
 void pencarianDataKucing(Queue Q){
 	char namaKucing[25];
 	char namaPemilik[25];
@@ -321,11 +316,11 @@ void pencarianDataKucing(Queue Q){
 	} 
 }
 
-/* Mencari alamat dari kucing di queue
- * I.S = Data belum dicari
- * F.S = Data sudah dicari jika ada maka akan mengirimkan alamat,
-         Jika tidak maka akan mengirimkan null
- */
+// Mencari alamat dari kucing di queue
+// I.S = Data belum dicari
+/* F.S = Data sudah dicari jika ada maka akan mengirimkan alamat,
+         Jika tidak maka akan mengirimkan null */
+// Author : Amelia Dewi Agustiani
 addressQueue searchData(char namaKucing[25], char namaPemilik[25], Queue Q){
 	addressQueue P = Front(Q);
 	while(P != Nil){
@@ -345,6 +340,7 @@ addressQueue searchData(char namaKucing[25], char namaPemilik[25], Queue Q){
 /* Mengembalikan kategori penyakit kucing 
    1: ringan, 2: sedang, 3: berat 
 */
+// Author : Amelia Dewi Agustiani
 int getKategoriPenyakit(int Penyakit){
 	if (Penyakit<4){
 		return 1; // penyakit ringan
@@ -356,6 +352,7 @@ int getKategoriPenyakit(int Penyakit){
 }	
 
 /* Mengembalikan waktu estimasi pelayanan berdasarkan nilai prioritas antrian */
+// Author : Amelia Dewi Agustiani
 int getWaktuPenyakit(int Penyakit){
 	if (Penyakit<4){
 		return 15; // penyakit ringan
@@ -367,6 +364,7 @@ int getWaktuPenyakit(int Penyakit){
 }
 
 /* Mengembalikan kategori prioritas penyakit kucing */
+// Author : Amelia Dewi Agustiani
 int getPrioritas(int Ringan, int Sedang, int Berat){
 	if (Berat > 0){
 		return 4;
@@ -380,6 +378,7 @@ int getPrioritas(int Ringan, int Sedang, int Berat){
 }
 
 /* Menghitung waktu estimasi pelayanan */
+// 
 int getWaktuPelayanan(int Ringan, int Sedang, int Berat){
 	return (Ringan*15) + (Sedang*30) + (Berat*45);
 }
@@ -616,7 +615,7 @@ void saveData(Queue *Q){
 	fprintf(out, "Nama Hewan               : %s\n", NamaKucing(P));
 	fprintf(out, "Nama Pemilik             : %s\n", NamaPemilik(P));
 	fprintf(out, "Jenis Kelamin            : %c\n", JenisKelamin(P));
-	fprintf(out, "Datang di menit ke       : %d\n", WaktuDatang(P));
+	fprintf(out, "Datang di menit ke       : %02d:%02d\n", GetHour(WaktuDatang(P)), GetMinute(WaktuDatang(P)));
 	fprintf(out, "Penyakit yang Diderita   :\n");
 	
 	while (addL != Nil){
@@ -626,8 +625,8 @@ void saveData(Queue *Q){
 	
 	fprintf(out, "Nilai Prioritas          : %d\n", Kategori(P));
 	fprintf(out, "Estimasi Waktu Pelayanan : %d\n", WaktuPelayanan(P));
-	fprintf(out, "Waktu Mulai Pelayanan    : %d\n", WaktuMulai(P));
-	fprintf(out, "Waktu Selesai Pelayanan  : %d\n", WaktuSelesai(P));
+	fprintf(out, "Waktu Mulai Pelayanan    : %02d:%02d\n", GetHour(WaktuMulai(P)), GetMinute(WaktuMulai(P)));
+	fprintf(out, "Waktu Selesai Pelayanan  : %02d:%02d\n", GetHour(WaktuSelesai(P)), GetMinute(WaktuSelesai(P)));
 	fprintf(out, "------------------------------------\n\n");
 
 	fclose(out);

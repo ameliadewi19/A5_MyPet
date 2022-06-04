@@ -21,103 +21,97 @@ typedef struct  tElmtlist{
 	addressList next;
 }ElmtList;
 
-/* Definisi  List                   */
-/* List Kosong  :  First(L) = Nil   */
-/* Setiap elemen dengan address P dapat diacu Info(P),Next(P)       */
-/* Elemen terakhir  List :jika addressnya Last, maka next(Last)=Nil */
-
 typedef struct {
 	addressList First;
 }List;
 
-/* ** Prototype   **  */
-/* ** Test List Kosong **  */
-boolean ListEmpty(List  L);                        
-/*  Mengirim true jika List kosong  */
+/******************************************************************************************/
+/*                                      Manajemen Memory                                  */
+/******************************************************************************************/
 
-/* Pembuatan  List Kosong  */
+// mengecek apakah jumlah elemen pada List kosong
+// mengirimkan true jika List kosong, mengirimkan false jika tidak
+// Author : Tabitha Salsabila Permana
+boolean ListEmpty(List L);
+
+// Membuat list dengan menginisiasikan null/nil
+// I.S : List belum terbuat
+// F.S : List sudah terbuat
+// Author : Fadhil Radja Assyidiq
 void CreateList(List *L);
-/* I.S  :  Sembarang    		*/
-/* F.S  :  Terbentuk  List kosong  	*/
 
-/* Manajeman  memory  			*/
+// Mengirimkan  address  hasil alokasi    sebuah elemen
+// Jika alokasi berhasil, maka  address tidak nil, dan misalnya  
+// menghasilkan P,  maka info(P)=X,  Nest(P)=Nil;               
+// Jika alokasi gagal,  mengirimkan  Nil 			  
+// Author : Amelia Dewi Agustiani
 addressList AlokasiList(infoPenyakit  X);
- /* Mengirimkan  address  hasil alokasi    sebuah elemen */
- /* Jika alokasi  berhasil, maka  address tidak nil, dan misalnya  */
- /* menghasilkan   P,  maka info(P)=X,  Nest(P)=Nil;               */
- /* Jika alokasi  gagal,  mengirimkan  Nil 			   */
 
-void DealokasiList(addressList *P);
-/* I.S  :   P  terdefinisi         	*/
-/* F.S  :   P dikembalikan ke  sistem 	*/
-/*   	    Melakukan  dealokasi, pengembalian address  P */
+// Melakukan dealokasi/ pengembalian address P ke system
+// I.S : P terdefinisi
+// F.S : P dikembalikan ke sistem
+// Author : Tabitha Salsabila Permana
+void DealokasiList (addressList *P);
 
+/******************************************************************************************/
+/*                                     Penambahan Elemen                                  */
+/******************************************************************************************/
 
-/*   ** PENCARIAN SEBUAH ELEMEN LIST **   */
+// Melakukan penambahan elemen diawal list
+// I.S  : L mungkin kosong          
+// F.S  : Melakukan alokasi sebuah elemen dan                
+//        menambahkan elemen pertama dengan nilai X jika     
+//        Alokasi berhasil 				     
+// Author : Fadhil Radja Assyidiq
+void InsFirst (List *L, infoPenyakit X);
 
-boolean FSearch(List L, addressList P);
-/* Mencari apakah  ada elemen List yang  beralamat   P   */
-/* Mengirimkan true jika ada, false jika tidak ada  	 */
+// Memasukan node di akhir list
+// I.S : L terdefinisi, mungkin kosong
+// F.S : melakukan alokasi sebuah elemen dan
+// menambahkan elemen terakhir pada List dengan nilai X jika alokasi
+// berhasil. Jika alokasi gagal IS = FS
+// Author : Amelia Dewi Agustiani
+void InsLast (List *L, infoPenyakit X);
 
+// I.S  : L mungkin kosong          
+// F.S  : Melakukan alokasi sebuah elemen dan                
+//        menambahkan elemen list di akhir; elemen terakhir  
+//        yang baru bernilai X jika alokasi berhasil, 	     
+//		  Jika alokasi gagal: I.S = F.S			     
+// Author : Tabitha Salsabila Permana
+void InsAfter(List * L, infoPenyakit X, infoPenyakit Y);
 
-/* ** PRIMITIF BERDASARKAN NILAI ** */
+/******************************************************************************************/
+/*                                    Penghapusan Elemen                                  */
+/******************************************************************************************/
 
-/* ** Penambahan Elemen ** */
-void InsFirst(List *L, infoPenyakit X);
-/* I.S  : L mungkin kosong          */
-/* F.S  : Melakukan alokasi sebuah elemen dan                */
-/*        menambahkan elemen pertama dengan nilai X jika     */
-/*        Alokasi berhasil 				     */
-
-void InsLast(List *L, infoPenyakit X);
-/* I.S  : L mungkin kosong          */
-/* F.S  : Melakukan alokasi sebuah elemen dan                */
-/*        menambahkan elemen list di akhir; elemen terakhir  */
-/*        yang baru bernilai X jika alokasi berhasil, 	     */	
-/*	  Jika alokasi gagal: I.S = F.S			     */
-
-/* *** Penghapusan Elemen  ***  */
-
-void InsAfter(List *L, infoPenyakit X, infoPenyakit Y);
-/* I.S  : L mungkin kosong          */
-/* F.S  : Melakukan alokasi sebuah elemen dan                */
-/*        menambahkan elemen list di akhir; elemen terakhir  */
-/*        yang baru bernilai X jika alokasi berhasil, 	     */	
-/*	  Jika alokasi gagal: I.S = F.S			     */
-
-/* *** Penghapusan Elemen  ***  */
-	  
+// Melakukan delete node di awal 
+// I.S : Node di akhir list belum terhapus
+// F.S : Node di akhir list sudah terhapus
+// Author : Fadhil Radja Assyidiq
 void DelFirst(List *L, infoPenyakit *X);
-  /* I.S    : List tidak kosong  		                 */
-  /* F.S    : Elemen pertama List dihapus, nilai info disimpan   */
-  /*	      pada X dan alamat elemen pertama  di-dealokasi 	 */
 
-
+// Menghapus node diakhir list
+// I.S    : List tidak kosong  		                 
+// F.S    : Elemen pertama List dihapus, nilai info disimpan   
+//	        pada X dan alamat elemen pertama  di-dealokasi 	
+// Author : Amelia Dewi Agustiani
 void DelLast(List *L, infoPenyakit *X);
-  /* I.S    : List tidak kosong  		                 */
-  /* F.S    : Elemen terakhir list dihapus, nilai info disimpan  */
-  /*	      pada X dan alamat elemen terakhir di-dealokasi 	 */
 
-/* *******  PRIMITIF BERDASARKAN ALAMAT ********	*/
-/* Penambahan Elemen Berdasarkan Alamat 		*/
+// Menghapus node diposisi tertentu
+// I.S : Delete atau penghapusan pada elemen yang dipilih 
+//       belum dilakukan
+// F.S : Delete atau penghapusan pada elemen yang dipilih 
+//       sudah dilakukan
+// Author : Tabitha Salsabila Permana
+void DelAfter (List * L, infoPenyakit *X, infoPenyakit Y);
 
-void DelAfter(List *L, infoPenyakit *X, infoPenyakit Y);
-  /* I.S    : List tidak kosong  		                 */
-  /* F.S    : Elemen terakhir list dihapus, nilai info disimpan  */
-  /*	      pada X dan alamat elemen terakhir di-dealokasi 	 */
+/******************************************************************************************/
+/*                                       Operasi Lain                                     */
+/******************************************************************************************/
 
-/* *******  PRIMITIF BERDASARKAN ALAMAT ********	*/
-/* Penambahan Elemen Berdasarkan Alamat 		*/
-
-/* *************PROSES SEMUA ELEMEN ****************   */
-void PrintInfo(List L, char **C);
-/* I.S   : List mungkin kosong 	*/
-/* F.S   : Jika list tidak kosong, semua info yang disimpan pada */
-/*         elemen list di-print					 */
-/*         Jika list kosong, hanya menuliskan "List Kosong"	 */
-
+// Mengirimkan banyaknya elemen list, mengirimkan Nol jika kosong 
+// Author : Fadhil Radja Assyidiq
 int JumlahPenyakit(List L);
-/* Mengirimkan banyaknya elemen list, mengirimkan Nol jika kosong */
-
 
 #endif
