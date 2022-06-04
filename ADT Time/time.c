@@ -28,14 +28,13 @@ void SetMinute(TIME *J, int newMinute)
     (*J).Minute = newMinute;
 }
 
-void PrintTIME (TIME J)
-{
-    printf("%d:%d\n", J.Hour, J.Minute);
-}
-
 boolean IsJamValid (TIME J)
 {
-    return ((J.Hour >= 0) && (J.Hour <= 23)) && ((J.Minute >= 0) && (J.Minute <= 59));
+	boolean cek = ((J.Hour >= 0) && (J.Hour <= 23)) && ((J.Minute >= 0) && (J.Minute <= 59)); 
+	if (cek == false){
+		printf("					Jam yang anda inputkan salah!\n");
+	}
+    return cek;
 }
 
 long int TimeToMenit (TIME J)
@@ -56,7 +55,7 @@ TIME MenitToTime (long int N)
 }
 
 void PrintJam(TIME J){
-	printf("%02d:%02d", J.Hour, J.Minute);
+	printf("%02d:%02d", GetHour(J), GetMinute(J));
 }
 
 TIME NextNMenit (TIME J, int N)

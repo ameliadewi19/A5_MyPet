@@ -131,7 +131,7 @@ void tambahData(Queue *Q);
  * F.S = Data kucing sudah dipanggil (dequeue) 
          jika antrian kosong maka akan tampil "Data antrian kosong!"
  */
-void pemanggilanKucing(Queue *Q);
+void pemanggilanKucing(Queue *Q, Queue *sedangDiproses);
 
 /* Mencari data kucing di antrian
  * I.S = Data kucing belum dicari
@@ -165,11 +165,21 @@ void PrintInfoPenyakit(List L);
 void printData(addressQueue P);
 
 /* Mengirimkan hasil cek kevalidan inputan jenis kelamin kucing*/
-/* Jika inputan J/j/B/b maka akan mengirimkan false */
+/* Jika inputan J/j/B/b maka akan mengirimkan true */
 boolean cekInputJK(char jk);
+
+/* Mengirimkan hasil cek kevalidan inputan jumlah jenis penyakit*/
+/* Jika inputan antara 1 sampai 10 maka akan mengirimkan true */
+boolean cekInputJumlahPenyakit(int jumlahPenyakit);
+
+/* Mengirimkan hasil cek kevalidan inputan jumlah jenis penyakit*/
+/* Jika inputan antara 1 sampai 10 maka akan mengirimkan true */
+boolean cekInputNomorPenyakit(int jumlahPenyakit, int penyakit[]);
 
 /* I.S   : Data kucing belum masuk ke file 	*/
 /* F.S   : Data kucing sudah masuk ke file */
 void saveData(Queue *Q);
+
+void printDataDiproses(Queue sedangDiproses);
 
 #endif // QUEUE_H

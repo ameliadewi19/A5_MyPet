@@ -1,0 +1,468 @@
+Nama Hewan               : Choco
+Nama Pemilik             : Ceni
+Jenis Kelamin            : B
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Cacingan
+        2. Terkena Virus
+Nilai Prioritas          : 4
+Estimasi Waktu Pelayanan : 75
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 10
+------------------------------------
+
+Nama Hewan               : Brownie
+Nama Pemilik             : Beni
+Jenis Kelamin            : J
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Diare
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 45
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : B
+Nama Pemilik             : B
+Jenis Kelamin            : B
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : b
+Jenis Kelamin            : b
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : b
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : b
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : v
+Nama Pemilik             : v
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : b
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : b
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : d
+Nama Pemilik             : d
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : d
+Nama Pemilik             : d
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : b
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : j
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : j
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : b
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : d
+Nama Pemilik             : s
+Jenis Kelamin            : j
+Datang di menit ke       : 0
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 0
+Waktu Selesai Pelayanan  : 0
+------------------------------------
+
+Nama Hewan               : d
+Nama Pemilik             : d
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : f
+Nama Pemilik             : d
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : g
+Nama Pemilik             : g
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : b
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : g
+Nama Pemilik             : j
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : k
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : b
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : b
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : brownie
+Nama Pemilik             : budi
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : ceni
+Nama Pemilik             : c
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 10
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : b
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : brownie
+Nama Pemilik             : budi
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : budi
+Nama Pemilik             : boni
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : brownie
+Nama Pemilik             : budi
+Jenis Kelamin            : b
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 10
+------------------------------------
+
+Nama Hewan               : budi
+Nama Pemilik             : brownie
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : budi
+Nama Pemilik             : budi
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : broni
+Nama Pemilik             : bin
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : broni
+Nama Pemilik             : budi
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : bu
+Nama Pemilik             : bu
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+
+Nama Hewan               : brownie
+Nama Pemilik             : budi
+Jenis Kelamin            : j
+Datang di menit ke       : 9
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 9
+Waktu Selesai Pelayanan  : 9
+------------------------------------
+

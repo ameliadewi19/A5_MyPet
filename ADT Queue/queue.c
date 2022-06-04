@@ -10,6 +10,9 @@
  * P adalah pointer yang menunjuk ke node Queue sebagai hasil alokasi.
  * Jika alokasi gagal, modul mengembalikan NULL.
  */
+ 
+TIME waktuSelesaiAwal;
+boolean awalHari = false;
 
 char *jenisPenyakit[9] = {
 	"Penyakit Kulit",
@@ -164,13 +167,19 @@ void tambahData(Queue *Q){
 	printf("\n");
 	printPenyakit();
 	printf("\n");
-	printf("				        Masukkan Jumlah Penyakit             : "); scanf("%d", &totalPenyakit);
-	fflush(stdin);
-	puts("					Nomor Penyakit yang Diderita  : ");
-	for (i=0; i<totalPenyakit; i++){
-	    printf("					");
-		scanf("	%d", &tempPenyakit[i]);
-	}
+	
+	do {
+		printf("				        Masukkan Jumlah Penyakit             : "); scanf("%d", &totalPenyakit);
+		fflush(stdin);
+	} while (!cekInputJumlahPenyakit(totalPenyakit));
+	
+	do {
+		puts("					Nomor Penyakit yang Diderita  : ");
+		for (i=0; i<totalPenyakit; i++){
+		    printf("					");
+			scanf("	%d", &tempPenyakit[i]);
+		}
+	} while (!cekInputNomorPenyakit(totalPenyakit, tempPenyakit));
 	
 	int kategoriRingan = 0;
 	int kategoriSedang = 0;
@@ -235,7 +244,7 @@ void deQueue(Queue *Q){
  * F.S = Data kucing sudah dipanggil (dequeue) 
          jika antrian kosong maka akan tampil "Data antrian kosong!"
  */
-void pemanggilanKucing(Queue *Q){
+void pemanggilanKucing(Queue *Q, Queue *sedangDiproses){
 	system ("cls");
 	addressQueue P;
 	infotype R;	
@@ -262,6 +271,12 @@ void pemanggilanKucing(Queue *Q){
 		
 		if(pilih == 'Y' || pilih == 'y'){
 			saveData(Q);
+			int waktu = WaktuPelayanan(Front(*Q));
+			Front(*sedangDiproses) = AlokasiQueue(Info(Front(*Q)));
+			if(awalHari == false){
+				waktuSelesaiAwal = WaktuSelesai(Front(*Q));
+				awalHari = true;
+			}
 			deQueue(Q);
 			printf("\n");
 			printf("					              Harap bersabar \n");
@@ -375,7 +390,11 @@ TIME getWaktuMulai(addressQueue P, addressQueue P2, Queue Q){
 	mulai.Hour = 0;
 	mulai.Minute = 0;
 	if (Front(Q) == P){
-		mulai = WaktuDatang(P);
+		if (awalHari == false){
+			mulai = WaktuDatang(P);	
+		} else {
+			mulai = NextNMenit(waktuSelesaiAwal, 1);
+		}
 	} else if (TimeToMenit(WaktuDatang(P)) > TimeToMenit(WaktuSelesai(P2))) {
 		mulai = WaktuDatang(P);
 	} else {
@@ -506,6 +525,30 @@ void printData(addressQueue P){
 	printf("\n");
 }
 
+void printDataDiproses(Queue sedangDiproses){	
+   	
+   	printf("\n\n\n\n");
+   	printf("				            *** KUCING YANG SEDANG DIPROSES ***\n\n");
+	printf("				-----------------------------------------------------------\n");
+  	printf("				   Nama   | Waktu Pelayanan | Waktu Mulai | Waktu Selesai \n");
+   	printf("				-----------------------------------------------------------\n");
+   	
+	if (IsQueueEmpty(sedangDiproses)) { // Jika Queue Kosong
+	printf("				    -             -               -               -       \n");
+	} else {
+    	addressQueue P = sedangDiproses.Front;
+   									
+    	printf("				 %8s	  %d", NamaKucing(P), WaktuPelayanan(P));
+    	printf("            ");
+    	PrintJam(WaktuMulai(P));
+		printf("           ");
+    	PrintJam(WaktuSelesai(P));
+    	printf("           \n");
+	}
+	printf("				-----------------------------------------------------------\n\n");
+}
+
+
 /******************************************************************************************/
 /*                                    Pengecekan                                          */
 /******************************************************************************************/
@@ -517,8 +560,47 @@ void printData(addressQueue P){
 boolean cekInputJK(char jk){
 	if ( jk == 'J' || jk == 'j' || jk == 'B' || jk == 'b' )
 		return true;
-	else 
+	else {
+		printf("					Jenis kelamin harus (B/b/J/j)!\n");
 		return false;
+	}
+}
+
+/* Mengirimkan hasil cek kevalidan inputan jumlah jenis penyakit*/
+/* Jika inputan antara 1 sampai 10 maka akan mengirimkan true */
+boolean cekInputJumlahPenyakit(int jumlahPenyakit){
+	if ( jumlahPenyakit >= 1 && jumlahPenyakit <= 9 )
+		return true;
+	else{
+		printf("					Jumlah penyakit harus berada di antara 1-9!\n"); 
+		return false;
+	}
+}
+
+/* Mengirimkan hasil cek kevalidan inputan jumlah jenis penyakit*/
+/* Jika inputan antara 1 sampai 10 maka akan mengirimkan true */
+boolean cekInputNomorPenyakit(int jumlahPenyakit, int penyakit[]){
+	int i, j;
+	
+	// cek nomor yang diinputkan valid
+	for ( i = 0; i < jumlahPenyakit; i++ ){
+		if (!(penyakit[i] >= 1 && penyakit[i] <= 9)){
+			printf("					Nomor penyakit harus berada di antara 1-9!\n");
+			return false;
+		}
+	}
+	
+	// cek nomor yang diinputkan tidak berulang
+	for ( i = 0; i < jumlahPenyakit; i++ ){
+		for ( j = 0; j < jumlahPenyakit; j++){
+			if ( i != j && penyakit[i] == penyakit[j]){
+				printf("\n					Nomor penyakit tidak boleh duplikat!\n");
+				return false;
+			}
+		}
+	}
+	
+	return true;
 }
 
 void saveData(Queue *Q){
