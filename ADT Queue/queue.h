@@ -58,7 +58,7 @@ addressQueue AlokasiQueue(infotype X);
 // Melakukan dealokasi elemen P (pointer menunjuk ke alamat node queue).
 // I.S.: P terdefinisi.
 // F.S.: P dikembalikan ke sistem.
-// Author : Fadhil Radja Assyidiq
+// Author : Fadhil Radja Assydiq
 void DealokasiQueue(addressQueue *P);
 
 /******************************************************************************************/
@@ -79,7 +79,7 @@ bool IsQueueEmpty(Queue Q);
 
 /* Mengirimkan banyaknya elemen queue jika Q berisi atrian atau 
    mengirimkan 0 jika Q kosong */
-// Author : Fadhil Radja Assyidiq
+// Author : Fadhil Radja Assydiq
 int jumlahAntrian(Queue Q);
 
 /******************************************************************************************/
@@ -105,14 +105,14 @@ void tambahData(Queue *Q);
 // Proses: Mengambil info pada Front(Q) dan mengeluarkannya dari Queue dengan aturan FIFO
 // I.S. Q mungkin kosong atau Q mungkin berisi antrian 
 // F.S. info yang diambil = nilai elemen Front pd I.S.  
-// Author : Fadhil Radja Assyidiq
+// Author : Fadhil Radja Assydiq
 void deQueue(Queue *Q);
 
 // Memanggil data kucing teratas di antrian
 // I.S = Data kucing belum dipanggil (dequeue)
 /* F.S = Data kucing sudah dipanggil (dequeue) 
         jika antrian kosong maka akan tampil "Data antrian kosong!"*/
-// Author : Fadhil Radja Assyidiq        
+// Author : Fadhil Radja Assydiq        
 void pemanggilanKucing(Queue *Q, Queue *sedangDiproses);
 
 /******************************************************************************************/
@@ -152,7 +152,7 @@ int getWaktuPenyakit(int Penyakit);
 int getPrioritas(int Ringan, int Sedang, int Berat);
 
 /* Menghitung waktu estimasi pelayanan */
-// Author : Fadhil Radja Assyidiq
+// Author : Fadhil Radja Assydiq
 int getWaktuPelayanan(int Ringan, int Sedang, int Berat);
 
 /* Menghitung waktu mulai antrian */
@@ -211,12 +211,12 @@ void printDataDiproses(Queue sedangDiproses);
 /*Mengembalikan nilai cek inputan jenis kelamin
   Jika inputan J/j/B/b maka menghasilkan hasil true
   Jika inputan lain maka akan menghasilkan false */
-// Author : Amelia Dewi Agustiani
+// Author : Tabitha Salsabila Permana
 boolean cekInputJK(char jk);
 
 /* Mengirimkan hasil cek kevalidan inputan jumlah jenis penyakit*/
 /* Jika inputan antara 1 sampai 10 maka akan mengirimkan true */
-// Author : Amelia Dewi Agustiani
+// Author : Fadhil Radja Assydiq
 boolean cekInputJumlahPenyakit(int jumlahPenyakit);
 
 /* Mengirimkan hasil cek kevalidan inputan jumlah jenis penyakit*/
@@ -227,7 +227,7 @@ boolean cekInputNomorPenyakit(int jumlahPenyakit, int penyakit[]);
 // Menyimpan data riwayat ke file
 // I.S : Data kucing belum tersimpan di file
 // F.S : Data kucing sudah tersimpan 
-// Author : Fadhil Radja Assyidiq
+// Author : Fadhil Radja Assydiq
 void saveData(Queue *Q);
 
 #endif // QUEUE_H

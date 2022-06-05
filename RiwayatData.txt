@@ -479,3 +479,130 @@ Waktu Mulai Pelayanan    : 09:30
 Waktu Selesai Pelayanan  : 10:00
 ------------------------------------
 
+Nama Hewan               : boni
+Nama Pemilik             : bita
+Jenis Kelamin            : B
+Datang di menit ke       : 09:30
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 09:30
+Waktu Selesai Pelayanan  : 10:00
+------------------------------------
+
+Nama Hewan               : Ceni
+Nama Pemilik             : Cecil
+Jenis Kelamin            : J
+Datang di menit ke       : 09:35
+Penyakit yang Diderita   :
+        1. Diare
+        2. Luka Dalam
+        3. Penyakit Kuning
+        4. Terkena Virus
+Nilai Prioritas          : 4
+Estimasi Waktu Pelayanan : 150
+Waktu Mulai Pelayanan    : 10:01
+Waktu Selesai Pelayanan  : 12:31
+------------------------------------
+
+Nama Hewan               : Kucing
+Nama Pemilik             : Kuni
+Jenis Kelamin            : J
+Datang di menit ke       : 09:20
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 09:20
+Waktu Selesai Pelayanan  : 09:50
+------------------------------------
+
+Nama Hewan               : Budi
+Nama Pemilik             : Browni
+Jenis Kelamin            : B
+Datang di menit ke       : 09:20
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Terkena Virus
+Nilai Prioritas          : 4
+Estimasi Waktu Pelayanan : 60
+Waktu Mulai Pelayanan    : 09:20
+Waktu Selesai Pelayanan  : 10:20
+------------------------------------
+
+Nama Hewan               : Cecil
+Nama Pemilik             : Ceni
+Jenis Kelamin            : J
+Datang di menit ke       : 08:00
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 10:21
+Waktu Selesai Pelayanan  : 10:51
+------------------------------------
+
+Nama Hewan               : Uti
+Nama Pemilik             : Udi
+Jenis Kelamin            : B
+Datang di menit ke       : 09:30
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+        3. Bersin
+        4. Cacingan
+        5. Diare
+        6. Luka Dalam
+        7. Kerongkongan Berlendir
+        8. Penyakit Kuning
+        9. Terkena Virus
+Nilai Prioritas          : 4
+Estimasi Waktu Pelayanan : 270
+Waktu Mulai Pelayanan    : 10:21
+Waktu Selesai Pelayanan  : 14:51
+------------------------------------
+
+Nama Hewan               : Brownie
+Nama Pemilik             : Boni
+Jenis Kelamin            : B
+Datang di menit ke       : 09:00
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+        3. Bersin
+Nilai Prioritas          : 2
+Estimasi Waktu Pelayanan : 45
+Waktu Mulai Pelayanan    : 09:00
+Waktu Selesai Pelayanan  : 09:45
+------------------------------------
+
+Nama Hewan               : B
+Nama Pemilik             : b
+Jenis Kelamin            : j
+Datang di menit ke       : 09:00
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 09:00
+Waktu Selesai Pelayanan  : 09:30
+------------------------------------
+
+Nama Hewan               : b
+Nama Pemilik             : b
+Jenis Kelamin            : j
+Datang di menit ke       : 09:30
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 09:31
+Waktu Selesai Pelayanan  : 10:01
+------------------------------------
+

@@ -17,7 +17,7 @@ boolean ListEmpty(List L){
 // Membuat list dengan menginisiasikan null/nil
 // I.S : List belum terbuat
 // F.S : List sudah terbuat
-// Author : Fadhil Radja Assyidiq
+// Author : Fadhil Radja Assydiq
 void CreateList(List *L){
 	First(*L)=Nil;
 }
@@ -55,7 +55,7 @@ void DealokasiList (addressList *P){
 // F.S  : Melakukan alokasi sebuah elemen dan                
 //        menambahkan elemen pertama dengan nilai X jika     
 //        Alokasi berhasil 				     
-// Author : Fadhil Radja Assyidiq
+// Author : Fadhil Radja Assydiq
 void InsFirst (List *L, infoPenyakit X){
 	addressList P = AlokasiList(X);
 	if(P!=Nil){
@@ -116,7 +116,7 @@ void InsAfter(List * L, infoPenyakit X, infoPenyakit Y){
 // Melakukan delete node di awal 
 // I.S : Node di akhir list belum terhapus
 // F.S : Node di akhir list sudah terhapus
-// Author : Fadhil Radja Assyidiq
+// Author : Fadhil Radja Assydiq
 void DelFirst(List *L, infoPenyakit *X){
 	addressList P = First(*L);
 	if(First(*L) == Nil){
@@ -190,7 +190,7 @@ void DelAfter (List * L, infoPenyakit *X, infoPenyakit Y){
 /******************************************************************************************/
 
 // Mengirimkan banyaknya elemen list, mengirimkan Nol jika kosong 
-// Author : Fadhil Radja Assyidiq
+// Author : Fadhil Radja Assydiq
 int JumlahPenyakit(List L){
 	addressList P;
   	int jumlah = 0;

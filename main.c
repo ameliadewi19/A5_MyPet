@@ -61,27 +61,27 @@ int main(){
     	if(menuPilihan == '1'){
     		system("cls");
 			tambahData(&Q); 
-			printf("\n				"); 
+			printf("\n				        ");     
     		system("pause");	
 		                                                         
 		}		                                                         
 		else if(menuPilihan == '2'){
 			system("cls");
 			printAntrian(Q);
-			printf("\n				");       
+			printf("\n				        ");       
 			system("pause");
 		}
 		else if(menuPilihan == '3'){
 			system("cls");
 			pemanggilanKucing(&Q, &sedangDiproses);  
-			printf("\n				");
+			printf("\n				        ");     
 			system("pause");
 
 		}
 		else if(menuPilihan == '4'){
 			system("cls");
 			pencarianDataKucing(Q);
-			printf("\n				");
+			printf("\n				        ");     
 			system("pause");
 		}
 		else if(menuPilihan == '5'){
