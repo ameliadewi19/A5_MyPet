@@ -606,3 +606,16 @@ Waktu Mulai Pelayanan    : 09:31
 Waktu Selesai Pelayanan  : 10:01
 ------------------------------------
 
+Nama Hewan               : Sendi
+Nama Pemilik             : Sini
+Jenis Kelamin            : B
+Datang di menit ke       : 09:20
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 09:20
+Waktu Selesai Pelayanan  : 09:50
+------------------------------------
+

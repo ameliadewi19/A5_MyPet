@@ -105,7 +105,7 @@ void enQueue(Queue *Q, infotype data){
 		Front(*Q) = P;
 	} else {
 		if (Kategori(Front(*Q)) < data.kategori || (Kategori(Front(*Q)) == data.kategori && TimeToMenit(WaktuDatang(Front(*Q))) > TimeToMenit(data.waktuDatang)))
-	    { // untuk data jika kategori salah 
+	    { // untuk data jika kategori jika lebih besar di posisi front
 	        Next(P) = Front(*Q);
 	        Front(*Q) = P;
 	    }
