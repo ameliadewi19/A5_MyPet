@@ -96,7 +96,7 @@ void enQueue(Queue *Q, infotype data);
 // I.S = Q mungkin kosong atau Q mungkin berisi antrian
 // F.S = Data baru ditambahkan ke antrian 
 // Author : Tabitha Salsabila Permana
-void tambahData(Queue *Q);
+void tambahData(Queue *Q, Queue sedangDiproses);
 
 /******************************************************************************************/
 /*                                  Pemanggilan Data Kucing                               */

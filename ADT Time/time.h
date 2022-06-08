@@ -63,8 +63,8 @@ void PrintJam (TIME J);
 
 /* Mengirim true jika H,M,S dapat membentuk J yang valid */
 /* dipakai untuk mentest SEBELUM membentuk sebuah TIME */
-// Author : Amelia Dewi Agustiani
-boolean IsJamValid (TIME J);
+// Author : Amelia Dewi Agustiani dan Tabitha Salsabila 
+boolean IsJamValid (TIME J, TIME sedangDiproses);
 
 /******************************************************************************************/
 /*                              Kelompok Konversi Terhadap Type                           */

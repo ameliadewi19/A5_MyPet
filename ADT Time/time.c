@@ -68,14 +68,24 @@ void PrintJam(TIME J){
 
 /* Mengirim true jika H,M,S dapat membentuk J yang valid */
 /* dipakai untuk mentest SEBELUM membentuk sebuah TIME */
-// Author : Amelia Dewi Agustiani
-boolean IsJamValid (TIME J)
+// Author : Amelia Dewi Agustiani dan Tabitha Salsabila 
+boolean IsJamValid (TIME J, TIME sedangDiproses)
 {
-	boolean cek = ((J.Hour >= 0) && (J.Hour <= 23)) && ((J.Minute >= 0) && (J.Minute <= 59)); 
+	boolean cek = ((J.Hour >= 0) && (J.Hour <= 23)) && ((J.Minute >= 0) && (J.Minute <= 59) ); 
+	boolean cekWaktuDatang = (TimeToMenit(J)>=TimeToMenit(sedangDiproses));
 	if (cek == false){
 		printf("					Jam yang anda inputkan salah!\n");
 	}
-    return cek;
+	else if(cekWaktuDatang == false){
+		printf("				Waktu datang tidak boleh kurang dari waktu datang yang sedang diproses !\n");
+	}
+	
+	if(cek==false || cekWaktuDatang==false){
+		return false;
+	}else{
+		return true;
+	}
+    
 }
 
 /******************************************************************************************/

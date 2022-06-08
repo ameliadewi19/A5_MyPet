@@ -619,3 +619,42 @@ Waktu Mulai Pelayanan    : 09:20
 Waktu Selesai Pelayanan  : 09:50
 ------------------------------------
 
+Nama Hewan               : B
+Nama Pemilik             : a
+Jenis Kelamin            : j
+Datang di menit ke       : 07:00
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 07:00
+Waktu Selesai Pelayanan  : 07:30
+------------------------------------
+
+Nama Hewan               : d
+Nama Pemilik             : a
+Jenis Kelamin            : J
+Datang di menit ke       : 08:00
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 08:00
+Waktu Selesai Pelayanan  : 08:30
+------------------------------------
+
+Nama Hewan               : a
+Nama Pemilik             : s
+Jenis Kelamin            : j
+Datang di menit ke       : 08:00
+Penyakit yang Diderita   :
+        1. Penyakit Kulit
+        2. Luka Ringan
+Nilai Prioritas          : 1
+Estimasi Waktu Pelayanan : 30
+Waktu Mulai Pelayanan    : 08:00
+Waktu Selesai Pelayanan  : 08:30
+------------------------------------
+

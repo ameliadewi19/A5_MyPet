@@ -133,7 +133,7 @@ void enQueue(Queue *Q, infotype data){
 // I.S = Q mungkin kosong atau Q mungkin berisi antrian
 // F.S = Data baru ditambahkan ke antrian 
 // Author : Tabitha Salsabila Permana
-void tambahData(Queue *Q){
+void tambahData(Queue *Q, Queue sedangDiproses){
 	system("cls");
 	infotype data;
 	CreateList(&data.listPenyakit);
@@ -146,6 +146,8 @@ void tambahData(Queue *Q){
 	printf("					===========================================\n");
 	printf("					              Registrasi Data   \n");
 	printf("					===========================================\n");
+	printf("					Keterangan :  J = Jantan, B = Betina \n");
+	printf("					              Jam & Menit Dipisah Spasi\n\n");
 	printf("\n					Nama Kucing                 : "); scanf("%s", &data.namaKucing);
 	fflush(stdin);
 	printf("					Nama Pemilik                : "); scanf("%s", &data.namaPemilik);
@@ -155,10 +157,17 @@ void tambahData(Queue *Q){
 		fflush(stdin);
 	} while (!cekInputJK(data.jenisKelamin));
 	
-	do {
+	if(!IsQueueEmpty(sedangDiproses)){
+		do {
+			printf("					Datang di menit ke [HH MM]  : "); scanf("%d %d", &data.waktuDatang.Hour, &data.waktuDatang.Minute);
+			fflush(stdin);
+		} while (!IsJamValid(data.waktuDatang, data.waktuDatang));
+	} else {
+		do {
 		printf("					Datang di menit ke [HH MM]  : "); scanf("%d %d", &data.waktuDatang.Hour, &data.waktuDatang.Minute);
-		fflush(stdin);
-	} while (!IsJamValid(data.waktuDatang));
+		fflush(stdin);	
+		} while (!IsJamValid(data.waktuDatang, WaktuDatang(Front(sedangDiproses))));
+	}
 	
 	printf("\n");
 	printPenyakit();
