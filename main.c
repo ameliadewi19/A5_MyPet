@@ -60,7 +60,7 @@ int main(){
     	
     	if(menuPilihan == '1'){
     		system("cls");
-			tambahData(&Q); 
+			tambahData(&Q, sedangDiproses); 
 			printf("\n				        ");     
     		system("pause");	
 		                                                         

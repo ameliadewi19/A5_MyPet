@@ -20,7 +20,7 @@
 #define WaktuPelayanan(P) (P)->info.waktuPelayanan
 #define WaktuMulai(P) (P)->info.waktuMulai
 #define WaktuSelesai(P) (P)->info.waktuSelesai
-#define Kategori(P) (P)->info.kategori
+#define KategoriPrioritas(P) (P)->info.kategoriPrioritas
 #define ListPenyakit(P) (P)->info.listPenyakit
 
 /* Definisi elemen dan address */ 
@@ -32,7 +32,7 @@ typedef struct infoPelanggan {
 	int waktuPelayanan; // Lama Waktu Pelayanan
 	TIME waktuMulai; // Waktu Kucing Mulai Dilayani
 	TIME waktuSelesai; // Waktu Kucing Selesai Dilayani
-	int kategori; // Nilai kategori prioritas penyakit
+	int kategoriPrioritas; // Nilai kategori prioritas penyakit
 	List listPenyakit; // List Penyakit Hewan
 }infoPelanggan;
 

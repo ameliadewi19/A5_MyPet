@@ -77,7 +77,7 @@ boolean IsJamValid (TIME J, TIME sedangDiproses)
 		printf("					Jam yang anda inputkan salah!\n");
 	}
 	else if(cekWaktuDatang == false){
-		printf("				Waktu datang tidak boleh kurang dari waktu datang yang sedang diproses !\n");
+		printf("					Waktu datang tidak boleh kurang dari waktu datang yang sedang diproses!\n");
 	}
 	
 	if(cek==false || cekWaktuDatang==false){
