@@ -48,6 +48,18 @@ typedef struct {
     addressQueue Rear; // antrian belakang
 } Queue;
 
+typedef struct Riwayat {
+	char namaKucing[25]; // Nama Hewan
+	char namaPemilik[25]; // Nama Pemilik
+	char jenisKelamin; // Jenis Kelamin Hewan
+	TIME waktuDatang; // Waktu Kedatangan
+	int waktuPelayanan; // Lama Waktu Pelayanan
+	TIME waktuMulai; // Waktu Kucing Mulai Dilayani
+	TIME waktuSelesai; // Waktu Kucing Selesai Dilayani
+	int kategoriPrioritas; // Nilai kategori prioritas penyakit
+	infoPenyakit listPenyakit[9]; // List Penyakit Hewan
+} Riwayat;
+
 /* Mengirimkan address hasil alokasi sebuah elemen dengan info X.
    Jika alokasi berhasil, modul mengembalikan P; Info(P) = X, Next(P) = NULL.
    P adalah pointer yang menunjuk ke node Queue sebagai hasil alokasi.
@@ -227,7 +239,18 @@ boolean cekInputNomorPenyakit(int jumlahPenyakit, int penyakit[]);
 // Menyimpan data riwayat ke file
 // I.S : Data kucing belum tersimpan di file
 // F.S : Data kucing sudah tersimpan 
-// Author : Fadhil Radja Assydiq
+// Author : Fadhil Radja Assydiq & Amelia Dewi Agustiani
 void saveData(Queue *Q);
 
+// Mencari data kucing di file riwayat
+// I.S : Data kucing belum dicari di file
+// F.S : Data kucing sudah dicari
+// Author : Amelia Dewi Agustiani
+void pencarianRiwayatDataKucing();
+
+// Menampilkan data kucing di file riwayat
+// I.S : Data kucing belum tampil
+// F.S : Data kucing sudah tampil
+// Author : Amelia Dewi Agustiani
+void printRiwayatDataKucing();
 #endif // QUEUE_H

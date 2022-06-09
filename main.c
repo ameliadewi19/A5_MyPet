@@ -27,7 +27,9 @@ void showMenu(){
 	printf("\n					     2. Daftar Antrian");
 	printf("\n					     3. Pemanggilan Data");
 	printf("\n					     4. Mencari Data Kucing");
-	printf("\n					     5. Quit");
+	printf("\n					     5. Daftar Riwayat Data Kucing");
+	printf("\n					     6. Mencari Riwayat Data Kucing");
+	printf("\n					     7. Quit");
 	printf("\n");
 }
 
@@ -86,6 +88,18 @@ int main(){
 		}
 		else if(menuPilihan == '5'){
 			system("cls");
+			printRiwayatDataKucing();
+			printf("\n				        ");     
+			system("pause");
+		}
+		else if(menuPilihan == '6'){
+			system("cls");
+			pencarianRiwayatDataKucing();
+			printf("\n				        ");     
+			system("pause");
+		}
+		else if(menuPilihan == '7'){
+			system("cls");
 			showExit();
 			exit(0);
 		}
@@ -95,7 +109,7 @@ int main(){
 			system("pause");
 		}
 		system("cls");
-	} while(menuPilihan != '5');
+	} while(menuPilihan != '7');
 	
 	return 0;
 

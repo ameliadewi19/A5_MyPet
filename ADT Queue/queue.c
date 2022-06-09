@@ -6,7 +6,7 @@
  
 TIME waktuSelesaiAwal;    // untuk menampung waktu selesai
 boolean awalHari = false;   // untuk menentukan apakah hari merupakan awal atau bukan
-
+ 
 char *jenisPenyakit[9] = {
   	"Penyakit Kulit",
   	"Luka Ringan",
@@ -17,8 +17,8 @@ char *jenisPenyakit[9] = {
   	"Kerongkongan Berlendir",
   	"Penyakit Kuning",
   	"Terkena Virus"
-}; 
- 
+};
+
 /* Mengirimkan address hasil alokasi sebuah elemen dengan info X.
    Jika alokasi berhasil, modul mengembalikan P; Info(P) = X, Next(P) = NULL.
    P adalah pointer yang menunjuk ke node Queue sebagai hasil alokasi.
@@ -276,7 +276,7 @@ void pemanggilanKucing(Queue *Q, Queue *sedangDiproses){
     	scanf("%c", &pilih);
     
 	    if(pilih == 'Y' || pilih == 'y'){
-      	saveData(Q); // menyimpan data ke file  
+      	saveData(Q); // menyimpan data ke file
       	Front(*sedangDiproses) = AlokasiQueue(Info(Front(*Q))); // menyimpan data ke data yang sedang di proses
       	if(awalHari == false){
         	waktuSelesaiAwal = WaktuSelesai(Front(*Q));
@@ -631,33 +631,185 @@ boolean cekInputNomorPenyakit(int jumlahPenyakit, int penyakit[]){
 // Menyimpan data riwayat ke file
 // I.S : Data kucing belum tersimpan di file
 // F.S : Data kucing sudah tersimpan 
-// Author : Fadhil Radja Assydiq
+// Author : Fadhil Radja Assydiq & Amelia Dewi Agustiani
 void saveData(Queue *Q){
-  	addressQueue P;
-  	P = (*Q).Front;
-  
-  	List L = ListPenyakit(P);
-  	addressList addL = First(L);
-  	int i = 1;
-  
-  	FILE *out=fopen("RiwayatData.txt","a");
-  
-  	fprintf(out, "Nama Hewan               : %s\n", NamaKucing(P));
-  	fprintf(out, "Nama Pemilik             : %s\n", NamaPemilik(P));
-  	fprintf(out, "Jenis Kelamin            : %c\n", JenisKelamin(P));
-  	fprintf(out, "Datang di menit ke       : %02d:%02d\n", GetHour(WaktuDatang(P)), GetMinute(WaktuDatang(P)));
-  	fprintf(out, "Penyakit yang Diderita   :\n");
-  
-  	while (addL != Nil){
-    	fprintf(out, "        %d. %s\n", i++, jenisPenyakit[InfoPenyakit(addL)-1]);
-    	addL = Next(addL);
-  	}
-  
-  	fprintf(out, "Nilai Prioritas          : %d\n", KategoriPrioritas(P));
-  	fprintf(out, "Estimasi Waktu Pelayanan : %d\n", WaktuPelayanan(P));
-  	fprintf(out, "Waktu Mulai Pelayanan    : %02d:%02d\n", GetHour(WaktuMulai(P)), GetMinute(WaktuMulai(P)));
-  	fprintf(out, "Waktu Selesai Pelayanan  : %02d:%02d\n", GetHour(WaktuSelesai(P)), GetMinute(WaktuSelesai(P)));
-  	fprintf(out, "------------------------------------\n\n");
+	int i, n=2;
+	Riwayat *s;
+	addressQueue P=Front(*Q);
+	
+	FILE *fp;
+	
+	s=(Riwayat*)calloc(n, sizeof(Riwayat));	
+	fp = fopen("RiwayatData.dat", "a");
+    
+    if (fp == NULL)
+    {
+        /* Unable to open file hence exit */
+        printf("\nUnable to open 'RiwayatData.dat' file.\n");
+        printf("Please check whether file exists and you have write privilege.\n");
+        exit(EXIT_FAILURE);
+    }
+	
+	strcpy(s[0].namaKucing,NamaKucing(P));
+	strcpy(s[0].namaPemilik,NamaPemilik(P));
+	s[0].jenisKelamin = JenisKelamin(P);
+	s[0].waktuDatang = WaktuDatang(P);
+	s[0].waktuMulai = WaktuMulai(P);
+	s[0].waktuSelesai = WaktuSelesai(P);
+	s[0].waktuPelayanan = WaktuPelayanan(P);
+	s[0].kategoriPrioritas = KategoriPrioritas(P);
+	
+	addressList L = First(ListPenyakit(P));
+	i = 0;
+	while(L != Nil){
+		s[0].listPenyakit[i].penyakit = L->info.penyakit;
+		s[0].listPenyakit[i].kategori = L->info.kategori;
+		s[0].listPenyakit[i].waktu = L->info.waktu;
+		i++;
+		L = Next(L);
+	}
+	
+	fwrite(&s[0],sizeof(Riwayat),1,fp);
+	
+	fclose(fp);
+}
 
-  	fclose(out);
+void pencarianRiwayatDataKucing(){
+	char namaKucing[20], namaPemilik[20];
+	printf("					===========================================\n");
+    printf("					         Pencarian Riwayat Kucing\n");
+    printf("					===========================================\n");
+  
+  	printf("\n					Masukan Nama Kucing : ");
+  	scanf("%s", &namaKucing);
+  	printf("					Masukan Nama Pemilik : ");
+  	scanf("%s", &namaPemilik);
+  
+  	printf("\n					-------------------------------------------\n");
+	
+	int i, j, n;
+	Riwayat *s;
+	boolean cari = false;
+	
+	FILE *fp;
+	fp = fopen("RiwayatData.dat", "r");
+	fseek(fp,0,SEEK_END);
+	n=ftell(fp)/sizeof(Riwayat);
+	s=(Riwayat*)calloc(n, sizeof(Riwayat));	
+
+	if (fp == NULL)
+    {
+        /* Unable to open file hence exit */
+        printf("\nUnable to open 'RiwayatData.dat' file.\n");
+        printf("Please check whether file exists and you have write privilege.\n");
+        exit(EXIT_FAILURE);
+    }
+
+	rewind(fp);
+	for(i = 0; i < n; i++){
+		fread(&s[i],sizeof(Riwayat),1,fp);
+		if (strcmp(s[i].namaKucing, namaKucing) == 0 && strcmp(s[i].namaPemilik, namaPemilik) == 0){
+			printf("					Nama Hewan                  : %s\n", s[i].namaKucing);
+		  	printf("					Nama Pemilik                : %s\n", s[i].namaPemilik);
+		  	printf("					Jenis Kelamin               : %c ", s[i].jenisKelamin);
+		  	if (s[i].jenisKelamin == 'J' || s[i].jenisKelamin == 'j')
+		    	printf ("(Jantan)\n");
+		  	else 
+		    	printf ("(Betina)\n");
+		    
+		  	printf("					Datang di menit ke          : "); PrintJam(s[i].waktuDatang); 
+		  	puts("\n					Penyakit yang Diderita      :");
+		  	for ( j = 0; j < 9; j++){
+		    	if (s[i].listPenyakit[j].penyakit > 0 && s[i].listPenyakit[j].penyakit < 10){
+		    		printf("					   %d. %s\n", j+1, jenisPenyakit[(s[i].listPenyakit[j].penyakit)-1]);
+				}
+			}
+		  	printf("					Nilai Prioritas             : %d ", s[i].kategoriPrioritas);
+		  	if (s[i].kategoriPrioritas == 1){
+		    	printf ("(Satu)\n");
+		  	} else if (s[i].kategoriPrioritas == 2){
+		    	printf ("(Dua)\n");
+		  	} else if (s[i].kategoriPrioritas == 3){
+		    	printf ("(Tiga)\n");
+		  	} else {
+		    	printf ("(Empat)\n");
+		  	}
+		  	printf("					Estimasi Waktu Pelayanan    : %d Menit", s[i].waktuPelayanan);
+		  	printf("\n					Waktu Mulai Pelayanan       : "); PrintJam(s[i].waktuMulai);
+		  	printf("\n					Waktu Selesai Pelayanan     : "); PrintJam(s[i].waktuSelesai);
+		  	printf("\n");
+		  	printf("\n					-------------------------------------------\n");
+		  	cari = true;
+		}
+	}
+	
+	if (cari == false){
+		printf("\n					     Data kucing tidak ada di riwayat!\n");
+	}
+	
+	fclose(fp);
+}
+
+void printRiwayatDataKucing(){
+	int i, j, n;
+	Riwayat *s;
+	boolean isi = false;
+	
+	FILE *fp;
+	fp = fopen("RiwayatData.dat", "r");
+	fseek(fp,0,SEEK_END);
+	n=ftell(fp)/sizeof(Riwayat);
+	s=(Riwayat*)calloc(n, sizeof(Riwayat));	
+
+	if (fp == NULL)
+    {
+        /* Unable to open file hence exit */
+        printf("\nUnable to open 'RiwayatData.dat' file.\n");
+        printf("Please check whether file exists and you have write privilege.\n");
+        exit(EXIT_FAILURE);
+    }
+
+	rewind(fp);
+	printf("					===========================================\n");
+    printf("					            Data Riwayat Kucing\n");
+    printf("					===========================================\n");
+	for(i = 0; i < n; i++){
+		fread(&s[i],sizeof(Riwayat),1,fp);
+		printf("					Nama Hewan                  : %s\n", s[i].namaKucing);
+	  	printf("					Nama Pemilik                : %s\n", s[i].namaPemilik);
+	  	printf("					Jenis Kelamin               : %c ", s[i].jenisKelamin);
+		if (s[i].jenisKelamin == 'J' || s[i].jenisKelamin == 'j')
+	    	printf ("(Jantan)\n");
+	 	else 
+	    	printf ("(Betina)\n");
+	    
+	  	printf("					Datang di menit ke          : "); PrintJam(s[i].waktuDatang); 
+	  	puts("\n					Penyakit yang Diderita      :");
+	  	for ( j = 0; j < 9; j++){
+	    	if (s[i].listPenyakit[j].penyakit > 0 && s[i].listPenyakit[j].penyakit < 10){
+	    		printf("					   %d. %s\n", j+1, jenisPenyakit[(s[i].listPenyakit[j].penyakit)-1]);
+			}
+		}
+	  	printf("					Nilai Prioritas             : %d ", s[i].kategoriPrioritas);
+	 	if (s[i].kategoriPrioritas == 1){
+	    	printf ("(Satu)\n");
+	  	} else if (s[i].kategoriPrioritas == 2){
+	    	printf ("(Dua)\n");
+	  	} else if (s[i].kategoriPrioritas == 3){
+	    	printf ("(Tiga)\n");
+	  	} else {
+	    	printf ("(Empat)\n");
+	  	}
+	  	printf("					Estimasi Waktu Pelayanan    : %d Menit", s[i].waktuPelayanan);
+	  	printf("\n					Waktu Mulai Pelayanan       : "); PrintJam(s[i].waktuMulai);
+	  	printf("\n					Waktu Selesai Pelayanan     : "); PrintJam(s[i].waktuSelesai);
+	  	printf("\n					-------------------------------------------\n");
+	  	isi = true;
+	}
+	
+	if (isi == false){
+		printf("					     Data riwayat kucing tidak ada!\n");
+	}
+	
+	fclose(fp);
 }
