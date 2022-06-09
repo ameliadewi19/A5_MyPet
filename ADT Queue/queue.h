@@ -253,4 +253,5 @@ void pencarianRiwayatDataKucing();
 // F.S : Data kucing sudah tampil
 // Author : Amelia Dewi Agustiani
 void printRiwayatDataKucing();
+
 #endif // QUEUE_H

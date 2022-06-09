@@ -144,7 +144,7 @@ void tambahData(Queue *Q, Queue sedangDiproses){
   	int i, totalPenyakit;
   
   	printf("					===========================================\n");
-  	printf("				    	        Registrasi Data   \n");
+  	printf("					              Registrasi Data   \n");
   	printf("					===========================================\n");
   	printf("					Keterangan :  J = Jantan, B = Betina \n");
   	printf("			        		      Jam & Menit Dipisah Spasi\n\n");
@@ -737,7 +737,6 @@ void pencarianRiwayatDataKucing(){
 		  	printf("					Estimasi Waktu Pelayanan    : %d Menit", s[i].waktuPelayanan);
 		  	printf("\n					Waktu Mulai Pelayanan       : "); PrintJam(s[i].waktuMulai);
 		  	printf("\n					Waktu Selesai Pelayanan     : "); PrintJam(s[i].waktuSelesai);
-		  	printf("\n");
 		  	printf("\n					-------------------------------------------\n");
 		  	cari = true;
 		}
